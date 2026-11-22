@@ -1902,7 +1902,8 @@ function sample(collect){
     if(flags.length){if(!z.fault||z.fault.code!==flags[0].code)log('warn',`Z${i+1} ${flags[0].code} · ${flags[0].msg} → quarantined, no alarm`);z.fault=flags[0];z.faultHold=flags[0].code==='F-SPIKE'?24:2}
     else if(z.fault){z.faultHold--;if(z.faultHold<=0){log('ok',`Z${i+1} sensor stream clean again`);z.fault=null}}
     // decision
-    if(fused>=TH&&!z.alert)raiseAlert(i,z,c,L1,{s:l2s,exp:L2.exp,contrib:L2.contrib},m);
+    if(z.grace>0)z.grace--;
+    if(fused>=TH&&!z.alert&&!(z.grace>0))raiseAlert(i,z,c,L1,{s:l2s,exp:L2.exp,contrib:L2.contrib},m);
     else if(z.alert&&z.score<0.3&&m-z.alert.t>10){resolveAlert(i,z)}
     if(z.pumpB&&z.irrMiss===false&&z.alert&&z.alert.cause==='pump'&&z.score<0.3)resolveAlert(i,z);
     z.lastClean=c;z.last=r;z.clean=c;z.seq++;
@@ -2327,8 +2328,9 @@ function setScenario(s){
   if(s==='offline'){SIM.online=!SIM.online;
     if(!SIM.online){SIM.syncing=false;log('warn','Gateway offline · nodes write packed 20 B records to flash ring buffer');toast('Uplink lost — edge keeps detecting and acting locally','warn',4000)}
     else{SIM.syncing=SIM.buf>0;log('info',`Reconnected · burst-syncing ${fmt(SIM.buf)} records (${fmt(SIM.buf*20/1024,1)} KB)`);toast('Uplink restored — burst sync started','ok',3000)}}
-  else if(s==='normal'){SIM.flt={};SIM.onset={};SIM.z.forEach(z=>{z.alert=null;z.backup=false;z.fan=false;z.shade=false;z.pumpB=false;z.irrMiss=false;z.fault=null});log('info','All faults cleared · normal diurnal cycle');toast('Normal diurnal cycle','ok',2200)}
-  else if(s==='heater'){fastForward(h=>h>=21||h<4,'night');F.heater=2;SIM.onset[2]=SIM.min;SIM.focus=2;log('info','Injected: Z3 main heater fails (no heat output, relay still ON)')}
+  else if(s==='normal'){SIM.flt={};SIM.onset={};SIM.z.forEach(z=>{z.alert=null;z.backup=false;z.fan=false;z.shade=false;z.pumpB=false;z.irrMiss=false;z.fault=null;z.vent=z.ventCmd;z.ventMis=0;z.grace=24});log('info','All faults cleared · normal diurnal cycle');toast('Normal diurnal cycle','ok',2200)}
+  else if(s==='heater'||s==='vent'||s==='pump'){SIM.z.forEach(z=>z.grace=0)}
+  if(s==='heater'){fastForward(h=>h>=21||h<4,'night');F.heater=2;SIM.onset[2]=SIM.min;SIM.focus=2;log('info','Injected: Z3 main heater fails (no heat output, relay still ON)')}
   else if(s==='vent'){fastForward(h=>h>=9.5&&h<13,'sunny morning');F.vent=3;SIM.onset[3]=SIM.min;SIM.focus=3;log('info','Injected: Z4 roof vent actuator jammed shut')}
   else if(s==='pump'){const H=nextIrr(hourOf(SIM.min));fastForward(h=>h>=H-0.3&&h<H,`before ${H}:00 irrigation`);F.pump=4;SIM.onset[4]=SIM.min;SIM.focus=4;log('info','Injected: Z5 irrigation pump fails')}
   else if(s==='stuck'){F.stuck=1;SIM.focus=1;log('info','Injected: Z2 humidity sensor stuck at 0 %')}
@@ -2450,9 +2452,9 @@ const TOUR=(function(){
     {t:'#matrix',who:2,h:'R3 · Stage 5 sanitization rules',p:'Our rules handle all 6: faults are quarantined, never deleted, and a fast drop with a second witness is always treated as a real anomaly.',d:8000,a:()=>click('#faultToggle [data-m="s5"]')},
     {t:'#priv',who:2,h:'R3 · Privacy & governance',p:'Data minimisation, pseudonymised operator IDs, TLS and AES-256 encryption, role-based access, 90-day hot retention and cold storage.',d:7000},
     {t:'#stage',who:3,h:'R4 · Live simulation lab',p:'A physics-driven greenhouse: sun, heater, vents, irrigation, humidity and CO₂ all interact. The autoencoder trained in this browser on 72 h of normal data.',d:9000,a:()=>{click('[data-s="normal"]');speed(1)}},
-    {t:'#stage',who:3,h:'Scenario 1 · Heater failure at night',p:'Zone 3 loses its heater. Temperature falls and frost forms on the glass. The edge raises an alert and turns on the backup heater within seconds.',d:15000,a:()=>{speed(3);click('[data-s="heater"]')}},
+    {t:'#stage',who:3,h:'Scenario 1 · Heater failure at night',p:'Zone 3 loses its heater. Temperature falls and frost forms on the glass. The edge raises an alert and turns on the backup heater within seconds.',d:16000,a:()=>{speed(1);click('[data-s="heater"]')}},
     {t:'.lab-grid',who:3,h:'Dual-layer AI, explained live',p:'Actual vs AI-expected temperature, the Layer 1 rule ring, the Layer 2 autoencoder ring, and per-sensor bars showing what looks wrong.',d:9000},
-    {t:'#stage',who:3,h:'Scenario 2 · Roof vent jammed',p:'On a sunny morning Zone 4 is told to open its vents, but they don\'t move. Heat builds, so fans and the shade screen switch on automatically.',d:14000,a:()=>{click('[data-s="normal"]');click('[data-s="vent"]')}},
+    {t:'#stage',who:3,h:'Scenario 2 · Roof vent jammed',p:'On a sunny morning Zone 4 is told to open its vents, but they don\'t move. Heat builds, so fans and the shade screen switch on automatically.',d:18000,a:()=>{click('[data-s="normal"]');click('[data-s="vent"]')}},
     {t:'#stage',who:3,h:'Scenario 3 · Irrigation pump failure',p:'At watering time Zone 5\'s soil doesn\'t get wetter. A rule spots the missed irrigation and starts the backup pump.',d:13000,a:()=>{click('[data-s="normal"]');click('[data-s="pump"]')}},
     {t:'.lab-grid3',who:3,h:'Scenario 4 · Humidity sensor stuck at 0 %',p:'An impossible 0 % reading is quarantined by Stage 5. Without cleaning the score would hit 1.00 (a false alarm); with it, there\'s no alarm, just a maintenance ticket.',d:11000,a:()=>{click('[data-s="normal"]');click('[data-s="stuck"]')}},
     {t:'#stage',who:3,h:'Scenario 5 · Single −40 °C glitch',p:'One crazy reading is held for one sample and quarantined. The operator is never woken up.',d:7000,a:()=>{click('[data-s="normal"]');click('[data-s="spike"]')}},
