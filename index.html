@@ -801,7 +801,7 @@ svg{max-width:100%}
     S-GH
   </a>
   <nav class="navlinks" id="navlinks">
-    <a href="#problem">Problem</a><a href="#telemetry">Telemetry</a><a href="#ai">AI</a><a href="#sanitize">Sanitize</a><a href="#sandbox">Live demo</a><a href="#cloud">Cloud &amp; cost</a><a href="#arch">Architecture</a>
+    <a href="#problem">Problem</a><a href="#telemetry">Telemetry</a><a href="#ai">AI</a><a href="#sanitize">Sanitize</a><a href="#sandbox">Live demo</a><a href="#cloud">Cloud</a><a href="#arch">Architecture</a>
   </nav>
   <div class="nowchip"><i id="nowIcon">R1</i><span id="nowText">Team intro</span></div>
 </header>
@@ -813,7 +813,7 @@ svg{max-width:100%}
   <div class="panel4">
     <header class="nav4">
       <a href="#home" class="brand4"><svg viewBox="0 0 32 32" width="24" height="24"><circle cx="16" cy="16" r="15" fill="#2F5E1A"/><path d="M16 8c-4 4-4 9 0 12 4-3 4-8 0-12z" fill="#B9E27A"/><path d="M16 24v-4" stroke="#B9E27A" stroke-width="2" stroke-linecap="round"/></svg>S-GH</a>
-      <nav class="pill4"><a href="#home" class="on">Home</a><a href="#problem">Problem</a><a href="#telemetry">Edge</a><a href="#ai">AI</a><a href="#sandbox">Live demo</a><a href="#cloud">Cost</a></nav>
+      <nav class="pill4"><a href="#home" class="on">Home</a><a href="#problem">Problem</a><a href="#telemetry">Edge</a><a href="#ai">AI</a><a href="#sandbox">Live demo</a><a href="#cloud">Cloud</a></nav>
     </header>
 
     <div class="intro4">
@@ -982,7 +982,7 @@ svg{max-width:100%}
     </div>
 
     <div class="drawer mt rv" id="byteDrawer">
-      <button type="button"><span>Payload, topics &amp; byte math <span class="sub" style="font-weight:500;margin-left:8px">REQ-02 · REQ-03 · REQ-06</span></span><span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+      <button type="button"><span>Payload, topics &amp; byte math <span class="sub" style="font-weight:500;margin-left:8px">REQ-02 · REQ-03</span></span><span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
       <div class="body"><div><div class="inner">
         <div class="grid" style="grid-template-columns:1fr 1fr">
           <div>
@@ -1096,7 +1096,7 @@ svg{max-width:100%}
     <h3 class="mt rv">Privacy &amp; governance</h3>
     <div class="priv mt-s" id="priv"></div>
 
-    <div class="handoff rv"><div>Hand-off <i style="background:var(--r3);color:#fff">R3</i> → <i style="background:var(--r4);color:#fff">R4</i> <b>Live demo, cloud &amp; cost</b></div></div>
+    <div class="handoff rv"><div>Hand-off <i style="background:var(--r3);color:#fff">R3</i> → <i style="background:var(--r4);color:#fff">R4</i> <b>Live demo &amp; cloud</b></div></div>
   </div>
 </section>
 
@@ -1209,30 +1209,9 @@ svg{max-width:100%}
 <!-- ================= R4: CLOUD ================= -->
 <section class="s" id="cloud" data-sp="4">
   <div class="wrap">
-    <span class="eyebrow rv">Stage 6 <span class="who" style="background:var(--r4);color:#fff">R4 · Cloud &amp; cost</span></span>
-    <h2 class="rv" style="--d:.08s">Three stacks.<br><span class="g">One budget: $50.</span></h2>
+    <span class="eyebrow rv">Stage 6 <span class="who" style="background:var(--r4);color:#fff">R4 · Cloud platform</span></span>
+    <h2 class="rv" style="--d:.08s">Three stacks.<br><span class="g">One clear winner.</span></h2>
     <div class="opts mt" id="opts"></div>
-
-    <div class="costgrid mt">
-      <div class="card rv rv-l">
-        <div style="display:flex;justify-content:space-between;align-items:center"><h3>Monthly cash</h3><span class="tag dark">REQ-06</span></div>
-        <div id="cashBars" style="margin-top:22px"></div>
-      </div>
-      <div class="card rv rv-r">
-        <div style="display:flex;justify-content:space-between;align-items:center"><h3>3-year TCO</h3><span class="sub">cash + admin hours</span></div>
-        <div id="tcoBars" style="margin-top:22px"></div>
-      </div>
-    </div>
-
-    <div class="drawer mt-s rv">
-      <button type="button"><span>Cost worksheet &amp; formulas <span class="sub" style="font-weight:500;margin-left:8px"><span class="flag">⚠</span> = verify on vendor calculator</span></span><span class="pm"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
-      <div class="body"><div><div class="inner" style="overflow-x:auto">
-        <table class="formula" id="worksheet"></table>
-        <p class="sub" style="margin-top:12px">Assumptions: us-east-1, 730 h/month, admin rate $10/h (student), 36 months. Amazon Timestream for LiveAnalytics is closed to new customers, so Option A uses Timestream for InfluxDB.</p>
-        <h3 style="font-size:15px;margin:22px 0 10px">Lock-in / exit checklist</h3>
-        <div class="chips" id="exitList"></div>
-      </div></div></div>
-    </div>
 
     <div class="grid mt" style="grid-template-columns:1fr 1fr">
       <div class="card rv rv-l">
@@ -1267,7 +1246,7 @@ svg{max-width:100%}
       <div class="stamp"><div><b>GO</b><small>Option C · Hybrid</small></div></div>
       <div>
         <span class="eyebrow" style="color:var(--leaf)">Final recommendation</span>
-        <p style="margin-top:10px" id="finalRec">Build Option C, the hybrid. Each zone node sanitizes its own readings and runs a Z-score plus an int8 autoencoder (~14 KB), so frost and ventilation failures are caught and acted on in about 6.4 s, well inside the 15 s limit, even with no internet. A local Mosquitto broker and a 56 KB-per-node flash ring buffer keep 24 h of telemetry, then burst-sync over TLS with sequence-number de-duplication. The cloud side is a single low-cost VPS running Mosquitto, TimescaleDB and Grafana for history, dashboards and weekly Isolation Forest retraining, at about $6/month in cash against a $50 cap. Everything uses open protocols and open-source licences, so the exit cost stays low. Next step: a 14-day simulated pilot with 40 injected events, gated on recall ≥ 0.95, ≤ 1 false alarm/day and zero sequence gaps after a 24 h outage.</p>
+        <p style="margin-top:10px" id="finalRec">Build Option C, the hybrid. Each zone node sanitizes its own readings and runs a Z-score plus an int8 autoencoder (~14 KB), so frost and ventilation failures are caught and acted on in about 6.4 s, well inside the 15 s limit, even with no internet. A local Mosquitto broker and a 56 KB-per-node flash ring buffer keep 24 h of telemetry, then burst-sync over TLS with sequence-number de-duplication. The cloud side is a single low-cost VPS running Mosquitto, TimescaleDB and Grafana for history, dashboards and weekly Isolation Forest retraining. Everything uses open protocols and open-source licences, so the exit cost stays low. Next step: a 14-day simulated pilot with 40 injected events, gated on recall ≥ 0.95, ≤ 1 false alarm/day and zero sequence gaps after a 24 h outage.</p>
         <div class="wc" id="wc"></div>
       </div>
     </div>
@@ -1295,7 +1274,7 @@ const SPEAKERS=[
   {id:'R1',role:'Problem & requirements',color:'var(--r1)',fg:'#1E2A1B'},
   {id:'R2',role:'Edge hardware & MQTT',color:'var(--r2)',fg:'#fff'},
   {id:'R3',role:'AI & sanitization',color:'var(--r3)',fg:'#fff'},
-  {id:'R4',role:'Cloud, cost & demo',color:'var(--r4)',fg:'#fff'}
+  {id:'R4',role:'Cloud & demo',color:'var(--r4)',fg:'#fff'}
 ];
 const ZONES=[
   {id:1,crop:'Tomato',off:0.4,c:'#F2B33D'},
@@ -1358,8 +1337,7 @@ const KPIS=[
   {id:'REQ-02',v:'24',u:'h',l:'Offline buffer per node',m:'Kill uplink 24 h → reconnect → 0 sequence gaps, 0 duplicates in DB.'},
   {id:'REQ-03',v:'<200',u:'B',l:'Payload per message',m:'len(UTF-8 JSON) logged per publish; max over 1 day must stay below 200.'},
   {id:'REQ-04',v:'520',u:'KB',l:'Edge RAM ceiling (ESP32)',m:'Container mem limit 520 KB-equivalent; heap high-water mark logged hourly.'},
-  {id:'REQ-05',v:'≤1',u:'/day',l:'False alarms · recall ≥ 95 %',m:'Confusion matrix on 40 injected events + 14 days of clean replay.'},
-  {id:'REQ-06',v:'$50',u:'/mo',l:'Cloud budget cap',m:'Cost worksheet + billing export; alarm at 80 % of cap.'}
+  {id:'REQ-05',v:'≤1',u:'/day',l:'False alarms · recall ≥ 95 %',m:'Confusion matrix on 40 injected events + 14 days of clean replay.'}
 ];
 (function(){
   const k=$('#kpis');
@@ -1376,8 +1354,7 @@ const KPIS=[
     {id:'R1',l:2,i:2,t:'Gateway outage > 24 h → data loss. Mitigation: flash ring buffer + oldest-first overwrite.'},
     {id:'R2',l:1,i:1,t:'Sensor drift (SCD40, soil). Mitigation: ASC + neighbour cross-check.'},
     {id:'R3',l:1,i:2,t:'False alarms erode trust. Mitigation: Stage 5 + shadow-mode AE.'},
-    {id:'R4',l:2,i:1,t:'Seasonal concept drift. Mitigation: PSI trigger, weekly retrain.'},
-    {id:'R5',l:0,i:1,t:'Cloud cost overrun. Mitigation: aggregates only, billing alarm.'}
+    {id:'R4',l:2,i:1,t:'Seasonal concept drift. Mitigation: PSI trigger, weekly retrain.'}
   ];
   const h=$('#heat');const col=['#EEF3DA','#F7E8C4','#F6D3C4'];
   const levels=['High','Med','Low'];
@@ -1659,57 +1636,20 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
 (function(){
   const J=[['Ingest','M4 12h10M10 6l6 6-6 6M20 4v16'],['Store','M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0'],['Analyze','M4 20V10M10 20V4M16 20v-7M22 20H2'],['Act','M13 2L4 14h7l-1 8 9-12h-7z'],['Manage','M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12h3M2 12h3M12 2v3M12 19v3'],['Dashboards','M3 3h18v14H3zM8 21h8M12 17v4']];
   const O=[
-    {k:'A',n:'Managed cloud',jobs:['AWS IoT Core (MQTT, X.509)','Timestream for InfluxDB ⚠','Lambda + scikit-learn layer','IoT Rules → SNS','IoT Device Management','Amazon Managed Grafana'],cash:'≈ $99.6 / mo'},
-    {k:'B',n:'Self-hosted OSS',jobs:['Mosquitto 2.0.x · EPL-2.0','TimescaleDB 2.x on PostgreSQL 17 · Apache-2.0 / PostgreSQL','Python 3.12 + scikit-learn 1.x · BSD-3','Grafana alerting → email / Telegram','Docker Compose + Ansible','Grafana OSS 12.x · AGPL-3.0'],cash:'≈ $6 / mo'},
-    {k:'C',n:'Hybrid edge',jobs:['Local Mosquitto + TLS bridge to cloud','Edge ring buffer → cloud TimescaleDB','Edge AE (TFLite Micro · Apache-2.0) + cloud IF','Local relay < 15 s · cloud notify','Bridge, cert rotation, OTA model push','Grafana OSS + local status page'],cash:'≈ $6 / mo',best:true}
+    {k:'A',n:'Managed cloud',jobs:['AWS IoT Core (MQTT, X.509)','Timestream for InfluxDB','Lambda + scikit-learn layer','IoT Rules → SNS','IoT Device Management','Amazon Managed Grafana']},
+    {k:'B',n:'Self-hosted OSS',jobs:['Mosquitto 2.0.x · EPL-2.0','TimescaleDB 2.x on PostgreSQL 17 · Apache-2.0 / PostgreSQL','Python 3.12 + scikit-learn 1.x · BSD-3','Grafana alerting → email / Telegram','Docker Compose + Ansible','Grafana OSS 12.x · AGPL-3.0']},
+    {k:'C',n:'Hybrid edge',jobs:['Local Mosquitto + TLS bridge to cloud','Edge ring buffer → cloud TimescaleDB','Edge AE (TFLite Micro · Apache-2.0) + cloud IF','Local relay < 15 s · cloud notify','Bridge, cert rotation, OTA model push','Grafana OSS + local status page'],best:true}
   ];
   $('#opts').innerHTML=O.map((o,i)=>`<div class="card opt rv${o.best?' best':''}" style="--d:${i*0.1}s">
     ${o.best?'<span class="tag dark ribbon">RECOMMENDED</span>':''}
     <div style="display:flex;align-items:baseline;gap:12px"><span class="ol">${o.k}</span><h3>${o.n}</h3></div>
-    <div class="sub" style="margin:4px 0 12px">${o.cash}</div>
+    <div style="margin-bottom:12px"></div>
     ${o.jobs.map((j,k)=>`<div class="job"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${J[k][1]}"/></svg><div><small>${J[k][0]}</small>${j}</div></div>`).join('')}
   </div>`).join('');
 
-  // costs
-  const MSG=432000, CONN_MIN=6*43200;
-  const A={msg:MSG/1e6*1.00, conn:CONN_MIN/1e6*0.08, rules:MSG/1e6*0.15*2, db:0.10*730, stor:20*0.10, graf:9+3*5, egress:0};
-  const Acash=Object.values(A).reduce((a,b)=>a+b,0);
-  const Bcash=4.99+1.00, Ccash=4.99+1.00;
-  const adm={A:1,B:4,C:3}, setup={A:10,B:20,C:24}, capex={A:0,B:0,C:60}, rate=10;
-  const cash={A:Acash,B:Bcash,C:Ccash};
-  const tco=k=>setup[k]*rate+capex[k]+36*(cash[k]+adm[k]*rate);
-  const ws=$('#worksheet');
-  const row=(o,item,f,v,flag)=>`<tr><td><b>${o}</b></td><td>${item}${flag?' <span class="flag">⚠</span>':''}</td><td class="f">${f}</td><td class="v">$${v.toFixed(2)}</td></tr>`;
-  ws.innerHTML=`<thead><tr><th>Opt</th><th>Line item</th><th>Formula</th><th style="text-align:right">$/mo</th></tr></thead><tbody>
-    ${row('A','IoT Core messaging','432,000 ÷ 10⁶ × $1.00',A.msg,1)}
-    ${row('A','IoT Core connectivity','6 dev × 43,200 min ÷ 10⁶ × $0.08',A.conn,1)}
-    ${row('A','Rules + actions','432,000 ÷ 10⁶ × ($0.15 + $0.15)',A.rules,1)}
-    ${row('A','Timestream for InfluxDB (smallest)','$0.10/h × 730 h',A.db,1)}
-    ${row('A','DB storage','20 GB × $0.10',A.stor,1)}
-    ${row('A','Managed Grafana','1 editor × $9 + 3 viewers × $5',A.graf,1)}
-    ${row('A','Egress','< 100 GB free tier',0,1)}
-    <tr><td></td><td><b>A cash total</b></td><td class="f">Σ above</td><td class="v"><b>$${Acash.toFixed(2)}</b></td></tr>
-    ${row('B','VPS 2 vCPU / 4 GB','1 × $4.99',4.99,1)}
-    ${row('B','Backups / snapshots','≈ 20 % of VPS',1.00,1)}
-    ${row('C','Same VPS (aggregates + alerts only)','$4.99 + $1.00 backups',Ccash,1)}
-    ${row('C','Edge gateway (Raspberry Pi 5, one-off)','$60 capex ÷ 36 mo',60/36,1)}
-    <tr><td colspan="4" style="padding-top:16px"><b>3-year TCO = setup h × $10 + capex + 36 × (cash + admin h × $10)</b></td></tr>
-    <tr><td>A</td><td colspan="2" class="f">10×10 + 0 + 36 × (${Acash.toFixed(2)} + 1×10)</td><td class="v">$${fmt(tco('A'))}</td></tr>
-    <tr><td>B</td><td colspan="2" class="f">20×10 + 0 + 36 × (${Bcash.toFixed(2)} + 4×10)</td><td class="v">$${fmt(tco('B'))}</td></tr>
-    <tr><td>C</td><td colspan="2" class="f">24×10 + 60 + 36 × (${Ccash.toFixed(2)} + 3×10)</td><td class="v">$${fmt(tco('C'))}</td></tr>
-  </tbody>`;
-  const maxCash=110;
-  const cb=(k,v,max,col,lbl)=>`<div class="cbar"><b>${k}</b><div class="t"><span data-w="${Math.min(100,v/max*100).toFixed(1)}" style="background:${col}">${lbl}</span></div></div>`;
-  const colors={A:'#D8453A',B:'#2A9D8F',C:'#5E8F2F'};
-  $('#cashBars').innerHTML=`<div style="position:relative">${['A','B','C'].map(k=>cb(k,cash[k],maxCash,colors[k],'$'+cash[k].toFixed(2))).join('')}
-    <div class="cap" style="left:calc(102px + (100% - 102px) * ${50/maxCash})"><em>$50 cap</em></div></div>`;
-  const maxT=4200;
-  $('#tcoBars').innerHTML=['A','B','C'].map(k=>cb(k,tco(k),maxT,colors[k],'$'+fmt(tco(k)))).join('');
-  $('#exitList').innerHTML=['MQTT 3.1.1 — any broker','pg_dump / CSV export','Grafana dashboards as JSON','X.509 certs portable','Models as TFLite + ONNX','Docker Compose in git'].map(x=>`<span class="chip">✓ ${x}</span>`).join('');
-
   // scorecard
-  const W=[['Cost',25],['Latency & offline',25],['Security',15],['Ops effort',15],['Edge fit',10],['Lock-in / exit',10]];
-  const sc={A:[1,3,5,5,3,2],B:[5,2,4,2,3,5],C:[5,5,4,3,5,4]};
+  const W=[['Latency & offline',30],['Security',20],['Ops effort',20],['Edge fit',15],['Lock-in / exit',15]];
+  const sc={A:[3,5,5,3,2],B:[2,4,2,3,5],C:[5,4,3,5,4]};
   const tot=k=>sc[k].reduce((a,s,i)=>a+s*W[i][1],0)/5;
   $('#score').innerHTML=['A','B','C'].map(k=>`<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><b>Option ${k}</b><span class="mono">${tot(k).toFixed(0)} / 100</span></div>
     <div style="display:flex;height:26px;border-radius:9px;overflow:hidden;background:var(--bg2)">${sc[k].map((s,i)=>`<span title="${W[i][0]}: ${s}/5 × ${W[i][1]}" style="width:${s*W[i][1]/5}%;background:${['#5E8F2F','#2A9D8F','#1E2A1B','#F2B33D','#E0567A','#B9663D'][i]};opacity:${.45+s*.11}"></span>`).join('')}</div></div>`).join('')+
@@ -1723,7 +1663,7 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
   const ct=el('text',{x:90,y:106,'text-anchor':'middle',class:'dsp','font-family':'Manrope, sans-serif','font-size':24,fill:'#1E2A1B'},d);ct.textContent='100';
 
   // feasibility
-  const F=[['H','Technical','AE ~14 KB ≪ 520 KB. Sim latency 6.4 s < 15 s.'],['H','Economic','$6/mo cash vs $50 cap (12 %).'],['M','Operational','Cert rotation + 3 h/mo admin. Mitigate: scripts + runbook.'],['H','Legal / ethical','No personal data. Pseudonymized operator logs.'],['M','Schedule','1 week to demo. Mitigate: sim-first, IF retrain is stretch.']];
+  const F=[['H','Technical','AE ~14 KB ≪ 520 KB. Sim latency 6.4 s < 15 s.'],['H','Economic','Open-source software on one small server.'],['M','Operational','Cert rotation + 3 h/mo admin. Mitigate: scripts + runbook.'],['H','Legal / ethical','No personal data. Pseudonymized operator logs.'],['M','Schedule','1 week to demo. Mitigate: sim-first, IF retrain is stretch.']];
   $('#feas').innerHTML=F.map((f,i)=>`<div class="card fz rv" style="--d:${i*0.06}s"><div class="lv ${f[0]}">${f[0]==='H'?'HIGH':'MED'}</div><b>${f[1]}</b><span>${f[2]}</span></div>`).join('');
 })();
 
@@ -1761,7 +1701,7 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
 
   const T=[['+56 KB','flash per node','2,880 × 20 B packed records'],['0 s','added alert delay','edge decides; cloud not on critical path'],['288 KB','burst on reconnect','5 nodes × 57.6 KB, rate-limited 50 msg/s'],['0','duplicates','dedupe on (node, seq) unique key']];
   $('#twist').innerHTML=T.map((t,i)=>`<div class="card tw rv" style="--d:${i*0.07}s"><span class="tag teal">${t[1]}</span><div class="big">${t[0]}</div><span>${t[2]}</span></div>`).join('');
-  const G=[['G0','Simulation','All 4 scenarios pass in Docker'],['G1','Shadow','14 days · AE silent · FA ≤ 1/day'],['G2','Pilot · 1 zone','Recall ≥ 0.95 on 40 injected events'],['G3','5 zones','24 h outage → 0 seq gaps'],['G4','Operate','Cost ≤ $10/mo · p95 latency < 15 s']];
+  const G=[['G0','Simulation','All 4 scenarios pass in Docker'],['G1','Shadow','14 days · AE silent · FA ≤ 1/day'],['G2','Pilot · 1 zone','Recall ≥ 0.95 on 40 injected events'],['G3','5 zones','24 h outage → 0 seq gaps'],['G4','Operate','Uptime ≥ 99 % · p95 latency < 15 s']];
   $('#gates').innerHTML=G.map((g,i)=>`<div class="card gate rv" style="--d:${i*0.07}s"><span class="g">${g[0]}</span><b>${g[1]}</b><span>${g[2]}</span></div>`).join('');
   const words=$('#finalRec').textContent.trim().split(/\s+/).length;$('#wc').textContent=words+' words (limit 150)';
   const R=[
@@ -2438,7 +2378,7 @@ $$('.card, .alertcard').forEach(c=>{if(c.querySelector('[data-w]'))wIO.observe(c
 
 const secs=$$('section[data-sp]');
 const dots=$('#dots');secs.forEach(s=>dots.insertAdjacentHTML('beforeend',`<a href="#${s.id}" aria-label="${s.id}"></a>`));
-const names=['Team intro','Problem & KPIs','Edge & telemetry','AI & sanitization','Demo, cloud & cost'];
+const names=['Team intro','Problem & KPIs','Edge & telemetry','AI & sanitization','Demo & cloud'];
 function onScroll(){
   const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
   $('#progress').style.width=(y/max*100)+'%';
