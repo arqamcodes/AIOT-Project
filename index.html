@@ -789,6 +789,36 @@ html,body{overflow-x:clip;max-width:100%}
 svg{max-width:100%}
 @media (max-width:900px){.grid[style*="grid-template-columns"]{grid-template-columns:1fr!important}.rv-l,.rv-r{transform:translateY(34px)}.rv-l.in,.rv-r.in{transform:none}}
 :root{--gut:clamp(16px,2.4vw,40px);--maxw:1680px}
+
+/* ---------- guided walkthrough ---------- */
+.b4.ghost4{background:transparent;border:1px solid #DCE3CC;color:#1B2A14}.b4.ghost4 i{background:#EEF1E4;color:#1B2A14}
+.tour{position:fixed;inset:0;z-index:200;pointer-events:none;opacity:0;transition:opacity .5s}
+.tour.on{opacity:1}
+.tspot{position:fixed;border-radius:22px;box-shadow:0 0 0 3px rgba(140,198,63,.95),0 0 0 9999px rgba(12,18,10,.52);transition:left .7s var(--ease),top .7s var(--ease),width .7s var(--ease),height .7s var(--ease),opacity .5s;opacity:0}
+.tcap{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);width:min(760px,calc(100% - 32px));pointer-events:auto;
+  background:rgba(20,28,16,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#EEF3E2;border:1px solid rgba(185,226,122,.25);border-radius:22px;padding:18px 22px 16px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);overflow:hidden;transition:opacity .4s}
+.tcap.hide{opacity:0;pointer-events:none}
+.tcap.in h4,.tcap.in p{animation:tcapIn .6s var(--ease) both}.tcap.in p{animation-delay:.08s}
+@keyframes tcapIn{from{opacity:0;transform:translateY(8px)}}
+.tbar{position:absolute;left:0;right:0;top:0;height:3px;background:rgba(255,255,255,.08)}.tbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#B9E27A,#5E9E22)}
+.thead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.twho{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:99px}
+.tnum{font-size:12px;color:#9FB28E;font-variant-numeric:tabular-nums}
+.tcap h4{font-size:21px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;color:#fff}
+.tcap p{font-size:15px;line-height:1.5;color:#D4DEC4}
+.tctl{position:absolute;right:14px;bottom:12px;display:flex;gap:6px;opacity:.55;transition:opacity .2s}
+.tcap:hover .tctl{opacity:1}
+.tctl button{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-size:13px}
+.tcap p{padding-right:150px}
+.tcard{position:fixed;left:50%;top:50%;transform:translate(-50%,-44%) scale(.96);opacity:0;transition:opacity .7s,transform .9s var(--ease);text-align:center;
+  background:rgba(251,252,244,.94);backdrop-filter:blur(16px);border-radius:30px;padding:44px 56px;width:min(820px,calc(100% - 32px));box-shadow:0 50px 120px -30px rgba(0,0,0,.55)}
+.tcard.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.tlogo{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.08em;color:#fff;background:#2F5E1A;padding:6px 12px;border-radius:99px}
+.tcard h3{font-size:clamp(30px,4vw,52px);font-weight:500;letter-spacing:-.04em;line-height:1.08;margin:18px 0 12px;color:#141C10}
+.tcard p{font-size:17px;line-height:1.55;color:#33402B;max-width:600px;margin:0 auto}
+html.touring .topbar{opacity:0!important;pointer-events:none}
+html.touring .dots{opacity:0}
+@media (max-width:640px){.tcap p{padding-right:0;padding-bottom:36px}.tcap h4{font-size:17px}.tcap p{font-size:13.5px}}
 </style>
 </head>
 <body>
@@ -821,7 +851,8 @@ svg{max-width:100%}
       <div class="side4">
         <p>We simulate five greenhouse zones with 25 sensors and run a tiny AI on the edge, so frost, heat and pump failures trigger action in seconds, even offline.</p>
         <div class="cta4">
-          <a href="#problem" class="b4 light">Learn more <i>↓</i></a>
+          <a href="#tour" class="b4 light" data-tour>Watch walkthrough <i>▶</i></a>
+          <a href="#problem" class="b4 ghost4">Learn more <i>↓</i></a>
           <a href="#sandbox" class="b4 dark">Live demo <i>→</i></a>
         </div>
       </div>
@@ -2314,7 +2345,7 @@ function resetSim(){SIM.flt={};SIM.onset={};SIM.online=true;SIM.syncing=false;SI
   SIM.warm=true;for(let k=0;k<720;k++)tickCore();SIM.warm=false;SIM.log=[];log('info','Simulation reset · day 4, 05:00');syncButtons();renderLog();render()}
 $('#resetBtn').addEventListener('click',resetSim);
 document.addEventListener('keydown',e=>{
-  if(e.target.closest('input,textarea'))return;
+  if(e.target.closest&&e.target.closest('input,textarea'))return;
   const m={'1':'normal','2':'heater','3':'vent','4':'pump','5':'stuck','6':'spike','7':'offline'}[e.key];
   if(m){setScenario(m);return}
   const r=$('#sandbox').getBoundingClientRect(),inView=r.top<innerHeight*0.6&&r.bottom>innerHeight*0.3;
@@ -2389,6 +2420,104 @@ function onScroll(){
   if(y<900){$$('.scene #house').forEach(h=>h.style.transform=`translateY(${y*0.04}px)`)}
 }
 addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* =====================================================================
+   GUIDED WALKTHROUGH · cinematic auto-tour (press T, or open with #tour)
+   ===================================================================== */
+const TOUR=(function(){
+  const sp=['#F2B33D','#2A9D8F','#E0567A','#5E8F2F'];
+  const click=s=>{const e=$(s);if(e)e.click()};
+  const speed=v=>click(`#speed [data-v="${v}"]`);
+  const openDrawer=s=>{const d=$(s);if(d&&!d.classList.contains('open'))d.querySelector('button').click()};
+  const closeDrawer=s=>{const d=$(s);if(d&&d.classList.contains('open'))d.querySelector('button').click()};
+  const flip=(i,on)=>{const f=$$('.flip')[i];if(f)f.classList.toggle('on',on)};
+  const S=[
+    {t:'#home .intro4',who:0,h:'Greenhouse Microclimate Anomaly Detector',p:'An end-to-end AIoT system, built entirely in simulation: 5 greenhouse zones, 25 sensors, edge AI, and alerts in seconds, even offline.',d:8000,intro:true},
+    {t:'.illu4',who:0,h:'A living greenhouse',p:'Every glowing dot is a sensor message travelling from a zone to the edge gateway, then up to the cloud.',d:7000},
+    {t:'.stats4',who:0,h:'The system at a glance',p:'Active alerts, a 6.4 s worst-case reaction time, live soil moisture, and a 24-hour offline buffer on every node.',d:7000},
+    {t:'#problem .story',who:0,h:'R1 · The problem',p:'A heater fails at 2 AM, a vent sticks shut, or the internet drops. Any one of these can cost a whole crop before anyone notices.',d:9000},
+    {t:'#kpis',who:0,h:'R1 · Requirements & KPIs',p:'Five measurable targets: alert in under 15 s, 24 h offline buffer, messages under 200 bytes, fit in 520 KB of ESP32 memory, and at most 1 false alarm a day.',d:10000,a:()=>setTimeout(()=>flip(0,true),2500),z:()=>flip(0,false)},
+    {t:'.riskwrap',who:0,h:'R1 · Risks & assumptions',p:'Gateway outages, sensor drift, false alarms and seasonal drift are mapped by likelihood and impact, each with a mitigation.',d:8000},
+    {t:'#sensors',who:1,h:'R2 · Simulated sensor suite',p:'Sensirion SHT45 and SCD40, a capacitive soil probe and a BH1750 light sensor feed an ESP32. Each sensor has its own failure checks.',d:9000},
+    {t:'#topo',who:1,h:'R2 · MQTT telemetry topology',p:'Five zone nodes publish over MQTT with QoS 1 to an edge aggregator, which runs the broker, the AI and the 24 h ring buffer, then bridges to the cloud over TLS.',d:10000},
+    {t:'#latbar',up:'.card',who:1,h:'R2 · Alert latency budget',p:'5 s sampling + 0.05 s AI + 0.3 s MQTT + 1 s actuator ≈ 6.4 s worst case, well under the 15 s requirement.',d:8000},
+    {t:'#byteDrawer',top:true,who:1,h:'R2 · Payload & data-volume maths',p:'A 106-byte JSON payload, 14,400 messages a day, and step-by-step MB and GB maths. The offline buffer packs 20-byte records so 24 h fits in flash.',d:11000,a:()=>openDrawer('#byteDrawer'),z:()=>closeDrawer('#byteDrawer')},
+    {t:'#thrChart',up:'.card',who:2,h:'R3 · Why fixed thresholds fail',p:'Normal summer afternoons trip a fixed 30 °C limit (false alarms), while an autumn heater failure stays above 5 °C and is missed. A learned normal band catches it.',d:10000},
+    {t:'#models',who:2,h:'R3 · Three candidate models',p:'Z-score is tiny but sees one signal at a time. Isolation Forest is powerful but too big for the edge. A TinyML autoencoder fits in ~14 KB and sees every signal together.',d:10000},
+    {t:'.timeline',up:'.grid',who:2,h:'R3 · Cold start, features & drift',p:'Day 0: rules only. After 2 weeks of clean data the autoencoder runs in shadow mode, then goes live, and retrains when the data drifts.',d:9000},
+    {t:'.explain',who:2,h:'R3 · Explainable alerts',p:'Operators get plain language: "Zone 3 is 7.4 °C colder than normal for 2 AM. Heater likely off". The vents close and the backup heater starts automatically.',d:9000},
+    {t:'#matrix',who:2,h:'R3 · Broken sensor or real emergency?',p:'A naïve glitch filter handles only 2 of 6 cases. It deletes real frost and raises false alarms from a stuck sensor.',d:8000,a:()=>click('#faultToggle [data-m="naive"]')},
+    {t:'#matrix',who:2,h:'R3 · Stage 5 sanitization rules',p:'Our rules handle all 6: faults are quarantined, never deleted, and a fast drop with a second witness is always treated as a real anomaly.',d:8000,a:()=>click('#faultToggle [data-m="s5"]')},
+    {t:'#priv',who:2,h:'R3 · Privacy & governance',p:'Data minimisation, pseudonymised operator IDs, TLS and AES-256 encryption, role-based access, 90-day hot retention and cold storage.',d:7000},
+    {t:'#stage',who:3,h:'R4 · Live simulation lab',p:'A physics-driven greenhouse: sun, heater, vents, irrigation, humidity and CO₂ all interact. The autoencoder trained in this browser on 72 h of normal data.',d:9000,a:()=>{click('[data-s="normal"]');speed(1)}},
+    {t:'#stage',who:3,h:'Scenario 1 · Heater failure at night',p:'Zone 3 loses its heater. Temperature falls and frost forms on the glass. The edge raises an alert and turns on the backup heater within seconds.',d:15000,a:()=>{speed(3);click('[data-s="heater"]')}},
+    {t:'.lab-grid',who:3,h:'Dual-layer AI, explained live',p:'Actual vs AI-expected temperature, the Layer 1 rule ring, the Layer 2 autoencoder ring, and per-sensor bars showing what looks wrong.',d:9000},
+    {t:'#stage',who:3,h:'Scenario 2 · Roof vent jammed',p:'On a sunny morning Zone 4 is told to open its vents, but they don\'t move. Heat builds, so fans and the shade screen switch on automatically.',d:14000,a:()=>{click('[data-s="normal"]');click('[data-s="vent"]')}},
+    {t:'#stage',who:3,h:'Scenario 3 · Irrigation pump failure',p:'At watering time Zone 5\'s soil doesn\'t get wetter. A rule spots the missed irrigation and starts the backup pump.',d:13000,a:()=>{click('[data-s="normal"]');click('[data-s="pump"]')}},
+    {t:'.lab-grid3',who:3,h:'Scenario 4 · Humidity sensor stuck at 0 %',p:'An impossible 0 % reading is quarantined by Stage 5. Without cleaning the score would hit 1.00 (a false alarm); with it, there\'s no alarm, just a maintenance ticket.',d:11000,a:()=>{click('[data-s="normal"]');click('[data-s="stuck"]')}},
+    {t:'#stage',who:3,h:'Scenario 5 · Single −40 °C glitch',p:'One crazy reading is held for one sample and quarantined. The operator is never woken up.',d:7000,a:()=>{click('[data-s="normal"]');click('[data-s="spike"]')}},
+    {t:'#stage',who:3,h:'Twist card · Gateway offline',p:'The uplink goes down. The edge keeps detecting and acting locally while every node writes packed records into its 24 h flash ring buffer.',d:11000,a:()=>{click('[data-s="normal"]');click('[data-s="offline"]')}},
+    {t:'.lab-grid3',who:3,h:'Reconnect · burst sync',p:'When the internet returns, the buffered records burst to the cloud with 0 gaps and 0 duplicates, de-duplicated by node and sequence number.',d:9000,a:()=>click('[data-s="offline"]'),z:()=>{click('[data-s="normal"]');speed(1)}},
+    {t:'#opts',who:3,h:'R4 · Three cloud architectures',p:'Managed AWS, self-hosted open source, or a hybrid, compared across the six platform jobs: ingest, store, analyse, act, manage and dashboards.',d:9000},
+    {t:'#score',up:'.grid',who:3,h:'R4 · Weighted scorecard',p:'Latency and offline resilience, security, operations effort, edge fit and lock-in. The hybrid design wins with 85 out of 100.',d:8000},
+    {t:'#archSvg',up:'.card',who:3,h:'R4 · End-to-end architecture',p:'Sense → clean → decide → act locally, then sync to the cloud for history, dashboards and weekly model retraining.',d:10000},
+    {t:'#twist',who:3,h:'R4 · Twist card impact',p:'+56 KB of flash per node, 0 s added alert delay, a 288 KB burst on reconnect, and zero duplicates.',d:8000},
+    {t:'#gates',who:3,h:'R4 · Phased rollout',p:'Simulation → shadow mode → 1-zone pilot → 5 zones → operate, each stage gated by measurable criteria.',d:8000},
+    {t:'.verdict',who:3,h:'Final recommendation · GO',p:'Build the hybrid: edge AI for safety in seconds, a cloud for history and learning, open standards throughout.',d:10000},
+    {t:'#home .intro4',who:-1,h:'Thank you',p:'S-GH · Greenhouse Microclimate Anomaly Detector · arqamcodes.github.io/AIOT-Project',d:7000,outro:true}
+  ];
+  let i=-1,timer=null,on=false,paused=false,raf=0,left=0,stamp=0;
+  const ov=document.createElement('div');ov.className='tour';ov.innerHTML=`
+    <div class="tspot"></div>
+    <div class="tcap"><div class="tbar"><span></span></div>
+      <div class="thead"><span class="twho"></span><span class="tnum"></span></div>
+      <h4></h4><p></p>
+      <div class="tctl"><button type="button" data-k="prev" aria-label="Previous step">‹</button><button type="button" data-k="pause" aria-label="Pause tour">❚❚</button><button type="button" data-k="next" aria-label="Next step">›</button><button type="button" data-k="exit" aria-label="Exit tour">✕</button></div>
+    </div>
+    <div class="tcard"><span class="tlogo">S-GH</span><h3></h3><p></p></div>`;
+  document.body.appendChild(ov);
+  const spot=ov.querySelector('.tspot'),cap=ov.querySelector('.tcap'),card=ov.querySelector('.tcard'),bar=ov.querySelector('.tbar span');
+  function target(st){let e=$(st.t);if(e&&st.up){const u=e.closest(st.up);if(u)e=u}return e}
+  function place(){if(!on)return;const st=S[i],e=st&&target(st);
+    if(e&&!st.intro&&!st.outro){const r=e.getBoundingClientRect(),pad=14;
+      spot.style.cssText=`opacity:1;left:${r.left-pad}px;top:${Math.max(6,r.top-pad)}px;width:${r.width+pad*2}px;height:${Math.min(innerHeight-12,r.height+pad*2)}px`}
+    else spot.style.opacity=0;
+    raf=requestAnimationFrame(place)}
+  function go(n){
+    if(i>=0&&S[i]&&S[i].z)S[i].z();
+    i=n;if(i<0)i=0;if(i>=S.length){stop();return}
+    const st=S[i],e=target(st);
+    const w=st.who>=0?SPEAKERS[st.who]:null;
+    const wh=cap.querySelector('.twho');wh.textContent=w?`${w.id} · ${w.role}`:'S-GH';wh.style.background=w?sp[st.who]:'#2F5E1A';wh.style.color=w&&st.who===0?'#1B2A14':'#fff';
+    cap.querySelector('.tnum').textContent=`${i+1} / ${S.length}`;
+    cap.querySelector('h4').textContent=st.h;cap.querySelector('p').textContent=st.p;
+    cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');
+    const big=st.intro||st.outro;card.classList.toggle('show',!!big);cap.classList.toggle('hide',!!big);
+    if(big){card.querySelector('h3').textContent=st.h;card.querySelector('p').textContent=st.p}
+    if(e){const r=e.getBoundingClientRect();const y=scrollY+r.top-Math.max(80,(innerHeight-Math.min(r.height,innerHeight-220))/2)+(r.height>innerHeight-220?0:-40);
+      window.scrollTo({top:Math.max(0,big?0:st.top?scrollY+r.top-90:y),behavior:'smooth'})}
+    if(st.a)setTimeout(st.a,600);
+    left=st.d;run()}
+  function run(){clearTimeout(timer);if(paused)return;stamp=performance.now();
+    bar.style.transition='none';bar.style.width=(100*(1-left/S[i].d))+'%';void bar.offsetWidth;
+    bar.style.transition=`width ${left}ms linear`;bar.style.width='100%';
+    timer=setTimeout(()=>go(i+1),left)}
+  function pause(){if(!on)return;paused=!paused;cap.querySelector('[data-k="pause"]').textContent=paused?'▶':'❚❚';
+    if(paused){clearTimeout(timer);left-=performance.now()-stamp;const w=getComputedStyle(bar).width;bar.style.transition='none';bar.style.width=w}else run()}
+  function start(){if(on)return;on=true;paused=false;document.documentElement.classList.add('touring');ov.classList.add('on');
+    document.documentElement.style.scrollBehavior='auto';raf=requestAnimationFrame(place);go(0)}
+  function stop(){clearTimeout(timer);cancelAnimationFrame(raf);if(i>=0&&S[i]&&S[i].z)S[i].z();on=false;i=-1;ov.classList.remove('on');card.classList.remove('show');document.documentElement.classList.remove('touring');document.documentElement.style.scrollBehavior=''}
+  ov.addEventListener('click',e=>{const k=e.target.closest('button')?.dataset.k;if(k==='next')go(i+1);else if(k==='prev')go(i-1);else if(k==='pause')pause();else if(k==='exit')stop()});
+  document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;
+    if(!on&&(e.key==='t'||e.key==='T')){start();return}
+    if(!on)return;
+    if(e.key==='Escape')stop();else if(e.key==='ArrowRight'){e.stopImmediatePropagation();go(i+1)}else if(e.key==='ArrowLeft'){e.stopImmediatePropagation();go(i-1)}
+    else if(e.key==='p'||e.key==='P')pause()},true);
+  $$('[data-tour]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();start()}));
+  if(location.hash==='#tour')setTimeout(start,AE.ready?800:4500);
+  return {start,stop,go:n=>go(n),get i(){return i},steps:S.length,total:S.reduce((a,s)=>a+s.d,0)};
+})();
+window.TOUR=TOUR;
 })();
 </script>
 </body>
