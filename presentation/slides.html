@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>S-GH Backup Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#141C10;--muted:#55624B;--g:#2F5E1A;--g2:#4E8A1E;--leaf:#8CC63F;--bg:#EEF0EA;--line:#E2E7D6;--r1:#F2B33D;--r2:#2A9D8F;--r3:#E0567A;--r4:#5E8F2F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:Manrope,'Segoe UI',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:radial-gradient(1200px 800px at 85% 0%,#F8F9F4 0%,transparent 60%),var(--bg);padding:64px 88px;margin:0 0 40px}
+.top{display:flex;justify-content:space-between;align-items:center;height:44px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:22px;letter-spacing:-.02em}
+.brand i{width:30px;height:30px;border-radius:50%;background:var(--g);display:grid;place-items:center}
+.brand i:after{content:"";width:10px;height:14px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#B9E27A}
+.who{display:flex;align-items:center;gap:14px;font-size:18px;color:var(--muted)}
+.who b{font-size:16px;font-weight:700;padding:8px 16px;border-radius:99px;color:#fff}
+h1{font-weight:400;font-size:74px;line-height:1.04;letter-spacing:-.035em;margin-top:38px}
+h1 em{font-style:normal;color:var(--g2)}
+.sub{font-size:26px;line-height:1.5;color:var(--muted);margin-top:18px}
+.eb{display:inline-flex;align-items:center;gap:12px;font-size:20px;color:var(--muted);font-weight:500}
+.eb:before{content:"";width:10px;height:10px;border-radius:3px;background:var(--leaf)}
+.card{background:#fff;border-radius:28px;box-shadow:0 30px 60px -36px rgba(20,28,16,.45);overflow:hidden}
+.ill{display:block;width:100%;height:100%}
+ul.b{list-style:none;display:flex;flex-direction:column;gap:22px}
+ul.b li{position:relative;padding-left:40px;font-size:27px;line-height:1.35;color:#24301C}
+ul.b li:before{content:"";position:absolute;left:0;top:11px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--leaf)}
+.row{display:flex;gap:40px}
+.abs{position:absolute}
+.cap{padding:20px 26px 24px}
+.cap b{display:block;font-size:27px;font-weight:600;letter-spacing:-.02em}
+.cap span{font-size:19px;color:var(--muted)}
+.tag{display:inline-block;font-size:15px;font-weight:700;padding:5px 12px;border-radius:99px;margin-top:10px}
+.stat b{display:block;font-size:72px;font-weight:400;letter-spacing:-.045em;line-height:1}
+.stat b small{font-size:28px;color:var(--muted);margin-left:4px}
+.stat span{display:block;font-size:20px;color:var(--muted);margin-top:10px;line-height:1.35}
+.stats{display:grid;border-top:2px solid var(--line)}
+.stats .stat{padding:28px 26px 22px 0}
+.stats .stat+.stat{padding-left:26px;border-left:2px solid var(--line)}
+.chip:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--leaf);flex:none}
+.chip{display:inline-flex;align-items:center;gap:10px;font-size:20px;padding:12px 18px;border-radius:14px;background:#fff;box-shadow:0 10px 24px -18px rgba(20,28,16,.5)}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.team div{background:#fff;border-radius:20px;padding:18px 20px;display:flex;gap:14px;align-items:center;box-shadow:0 14px 30px -24px rgba(20,28,16,.5)}
+.team b{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:#fff;flex:none}
+.team span{font-size:19px;line-height:1.3}.team small{display:block;color:var(--muted);font-size:15px}
+.code{background:#141C10;color:#D9EBB8;border-radius:22px;padding:26px 28px;font-family:'Geist Mono',Consolas,monospace;font-size:20px;line-height:1.6}
+.code .k{color:#9BD3C9}.code .n{color:#F6C978}.code .c{color:#7E8F70}
+.tree{font-family:'Geist Mono',Consolas,monospace;font-size:20px;line-height:2;background:#fff;border-radius:22px;padding:20px 26px;box-shadow:0 30px 60px -36px rgba(20,28,16,.45)}
+.tree .s{background:#EEF1E4;padding:3px 9px;border-radius:7px}.tree em{font-style:normal;color:var(--muted);font-size:17px}
+.bars{display:flex;flex-direction:column;gap:20px}
+.bar{display:grid;grid-template-columns:250px 1fr 130px;align-items:center;gap:18px;font-size:22px}
+.bar .t{height:24px;border-radius:99px;background:#E3E8DA;overflow:hidden}.bar .t span{display:block;height:100%;border-radius:99px}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.strip{background:linear-gradient(135deg,#22401A,#2E5A20);color:#E9F2D2;border-radius:24px;padding:24px 30px;font-size:23px;line-height:1.5}
+.strip b{color:#fff}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.kpi .card{padding:34px 30px;display:flex;flex-direction:column;gap:18px;min-height:500px}
+.kpi .id{font-size:14px;font-weight:700;background:var(--ink);color:#fff;border-radius:99px;padding:4px 10px;align-self:flex-start}
+.kpi b{font-size:64px;font-weight:400;letter-spacing:-.045em;line-height:1}.kpi b small{font-size:24px;color:var(--muted)}
+.kpi span{font-size:20px;line-height:1.3;color:#33402B}
+.dev{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.dev .card svg{height:290px;background:linear-gradient(180deg,#F3F7EA,#fff)}
+.dev .cap b{font-size:23px}.dev .cap span{font-size:17px}
+.lat{display:flex;height:70px;border-radius:14px;overflow:hidden;font-size:17px;font-weight:700;color:#fff}
+.lat div{display:flex;align-items:center;justify-content:center}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:#fff;border-radius:24px;padding:30px 28px;position:relative;box-shadow:0 30px 60px -36px rgba(20,28,16,.45)}
+.tl:before{content:"";position:absolute;left:44px;right:44px;top:44px;height:4px;border-radius:4px;background:#E3E8DA}
+.tl div{position:relative;padding-top:40px}
+.tl div:before{content:"";position:absolute;top:2px;left:0;width:26px;height:26px;border-radius:50%;background:#fff;border:5px solid var(--leaf)}
+.tl b{display:block;font-size:22px;font-weight:600}.tl span{font-size:18px;color:var(--muted)}
+.sbar{display:grid;grid-template-columns:150px 1fr 90px;align-items:center;gap:16px;font-size:22px;color:#E9F2D2}
+.sbar .t{height:30px;border-radius:10px;background:rgba(255,255,255,.1);overflow:hidden}.sbar .t span{display:block;height:100%;border-radius:10px}
+.dark{background:radial-gradient(1200px 800px at 80% 0%,#2E5A20 0%,#1B2A14 70%);color:#EEF3E2}
+.dark h1{color:#fff}.dark h1 em{color:#B9E27A}.dark .who,.dark .note{color:#C2D1B0}.dark .brand{color:#fff}
+.note{font-size:20px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>AIoT Project · Stages 1–8</span><b style="background:var(--g)">00:00</b></div></div>
+  <div class="abs" style="left:88px;top:180px;width:820px">
+    <span class="eb">Smart agriculture · pure simulation</span>
+    <h1 style="font-size:86px">Greenhouse Microclimate <em>Anomaly Detector</em></h1>
+    <p class="sub">Edge AI that catches frost, heat and pump failures in seconds, and keeps 24 h of data when the internet drops.</p>
+  </div>
+  <div class="card abs" style="left:950px;top:150px;width:882px;height:620px"><svg class="ill" viewBox="0 0 900 632" data-scene="title"></svg></div>
+  <div class="team abs" style="left:88px;right:88px;bottom:64px">
+    <div><b style="background:var(--r1);color:#1B2A14">R1</b><span>Problem &amp; requirements<small>Slides 1–3</small></span></div>
+    <div><b style="background:var(--r2)">R2</b><span>Edge hardware &amp; MQTT<small>Slides 4–6</small></span></div>
+    <div><b style="background:var(--r3)">R3</b><span>AI &amp; sanitization<small>Slides 7–9</small></span></div>
+    <div><b style="background:var(--r4)">R4</b><span>Architecture &amp; demo<small>Slides 10–12</small></span></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>2 / 12</span><b style="background:var(--r1);color:#1B2A14">R1 · Problem · 01:15</b></div></div>
+  <h1>A heater fails at 2 AM.<br><em>Seedlings freeze by 2:20.</em></h1>
+  <div class="row" style="margin-top:40px;gap:28px">
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 340" style="height:400px" data-scene="night"></svg><div class="cap"><b>Sudden frost</b><span>Heater fails at night; zone falls toward 3 °C</span></div></div>
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 340" style="height:400px" data-scene="heat"></svg><div class="cap"><b>Vent stuck shut</b><span>Sunny morning; heat and CO₂ build up</span></div></div>
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 340" style="height:400px" data-scene="offline"></svg><div class="cap"><b>Internet drops</b><span>Twist card: buffer 24 h, then sync</span></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>3 / 12</span><b style="background:var(--r1);color:#1B2A14">R1 · Requirements · 02:30</b></div></div>
+  <h1>Five measurable <em>requirements</em></h1>
+  <div class="kpi" style="margin-top:56px">
+    <div class="card"><span class="id">REQ-01</span><div data-icon="stopwatch" data-c="#D8453A" data-s="150"></div><b>&lt;15<small> s</small></b><span>Critical alert latency</span></div>
+    <div class="card"><span class="id">REQ-02</span><div data-s="150" data-icon="box" data-c="#2A9D8F"></div><b>24<small> h</small></b><span>Offline buffer on every node</span></div>
+    <div class="card"><span class="id">REQ-03</span><div data-s="150" data-icon="env" data-c="#5E8F2F"></div><b>&lt;200<small> B</small></b><span>Size of each message</span></div>
+    <div class="card"><span class="id">REQ-04</span><div data-s="150" data-icon="chip" data-c="#8CC63F"></div><b>520<small> KB</small></b><span>Edge memory (ESP32)</span></div>
+    <div class="card"><span class="id">REQ-05</span><div data-s="150" data-icon="bell" data-c="#5E8F2F"></div><b>≤1<small> /day</small></b><span>False alarms · recall ≥ 95 %</span></div>
+  </div>
+  <div class="row" style="margin-top:56px;align-items:center;gap:24px">
+    <span class="note" style="width:170px">Top risks</span>
+    <div class="chips" style="flex:1">
+      <span class="chip">Long gateway outage → flash ring buffer</span>
+      <span class="chip">Sensor drift → cross-checks</span>
+      <span class="chip">False alarms → Stage 5 + shadow mode</span>
+      <span class="chip">Seasonal drift → retraining</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>4 / 12</span><b style="background:var(--r2)">R2 · Edge hardware · 03:45</b></div></div>
+  <h1>Real sensors, <em>simulated</em></h1>
+  <div class="dev" style="margin-top:42px">
+    <div class="card"><svg viewBox="0 0 220 190" class="ill" data-scene="d_sht"></svg><div class="cap"><b>Sensirion SHT45</b><span>Temp + humidity · I²C · ~$12</span></div></div>
+    <div class="card"><svg viewBox="0 0 220 190" class="ill" data-scene="d_scd"></svg><div class="cap"><b>Sensirion SCD40</b><span>CO₂ · I²C · ~$45</span></div></div>
+    <div class="card"><svg viewBox="0 0 220 190" class="ill" data-scene="d_soil"></svg><div class="cap"><b>Capacitive soil probe</b><span>Analog → ADC · ~$6</span></div></div>
+    <div class="card"><svg viewBox="0 0 220 190" class="ill" data-scene="d_lux"></svg><div class="cap"><b>ROHM BH1750</b><span>Light · I²C · ~$3</span></div></div>
+    <div class="card"><svg viewBox="0 0 220 190" class="ill" data-scene="d_esp"></svg><div class="cap"><b>ESP32-WROOM-32E</b><span>Edge MCU · 520 KB SRAM · ~$10</span></div></div>
+  </div>
+  <div class="row" style="margin-top:64px;align-items:center;gap:36px">
+    <div data-icon="stopwatch" data-c="#D8453A" data-s="150"></div>
+    <div style="flex:1">
+      <p style="font-size:28px;font-weight:500;margin-bottom:16px">Worst-case alert path ≈ <b style="color:var(--g2)">6.4 s</b> <span class="note">· limit 15 s</span></p>
+      <div class="lat"><div style="width:33.3%;background:#2A9D8F">Sense 5 s</div><div style="width:4%;background:#E0567A">AI</div><div style="width:5%;background:#F2B33D;color:#1B2A14">MQTT</div><div style="width:6.7%;background:#5E8F2F">Act 1 s</div><div style="flex:1;background:#E3E8DA;color:#55624B;justify-content:flex-end;padding-right:16px">headroom → 15 s</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>5 / 12</span><b style="background:var(--r2)">R2 · Telemetry · 05:00</b></div></div>
+  <h1>MQTT telemetry, <em>QoS 1</em></h1>
+  <div class="row" style="margin-top:36px">
+    <div class="card" style="width:1080px;height:700px"><svg class="ill" viewBox="0 0 1080 700" data-scene="mqtt"></svg></div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+      <div class="tree"><div><span class="s">gh/s01/z3/n03/tele</span> <em>30 s</em></div><div><span class="s">…/n03/alert</span> <em>event</em></div><div><span class="s">…/n03/status</span> <em>LWT</em></div><div><span class="s">gh/s01/z3/cmd/vent</span> <em>down</em></div></div>
+      <div class="code">{<span class="k">"z"</span>:<span class="n">3</span>, <span class="k">"t"</span>:<span class="n">21.4</span>, <span class="k">"rh"</span>:<span class="n">68.2</span>,<br>&nbsp;<span class="k">"sm"</span>:<span class="n">41.7</span>, <span class="k">"co2"</span>:<span class="n">612</span>,<br>&nbsp;<span class="k">"lux"</span>:<span class="n">18450</span>, <span class="k">"s"</span>:<span class="n">10482</span> …}<br><span class="c">// 106 bytes · limit 200</span></div>
+      <div class="chips"><span class="chip">X.509 cert per node</span><span class="chip">TLS 1.2+ · :8883</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>6 / 12</span><b style="background:var(--r2)">R2 · Data volume · 06:15</b></div></div>
+  <h1>106 bytes, <em>every 30 seconds</em></h1>
+  <div class="card" style="margin-top:36px;height:250px"><svg class="ill" viewBox="0 0 1744 250" data-scene="flow"></svg></div>
+  <div class="row" style="margin-top:40px;align-items:center;gap:50px">
+    <div class="card" style="width:520px;height:330px"><svg class="ill" viewBox="0 0 520 330" data-scene="buffer"></svg></div>
+    <div style="flex:1">
+      <p style="font-size:30px;font-weight:500;letter-spacing:-.02em;margin-bottom:26px">24 h offline buffer per node</p>
+      <div class="bars">
+        <div class="bar"><span>JSON records</span><span class="t"><span style="width:57%;background:#D8453A"></span></span><span class="v">298 KiB</span></div>
+        <div class="bar"><span>Packed 20 B records</span><span class="t"><span style="width:11%;background:#2A9D8F"></span></span><span class="v">56 KiB</span></div>
+        <div class="bar"><span>ESP32 SRAM</span><span class="t"><span style="width:100%;background:#141C10"></span></span><span class="v">520 KiB</span></div>
+      </div>
+      <p class="note" style="margin-top:22px">Packed records live in a 1 MB flash partition and burst-sync on reconnect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>7 / 12</span><b style="background:var(--r3)">R3 · AI engine · 07:30</b></div></div>
+  <h1>It learns what <em>normal looks like</em></h1>
+  <div class="card" style="margin-top:38px;height:600px"><svg class="ill" viewBox="0 0 1744 600" data-scene="thr"></svg></div>
+  <div class="row" style="margin-top:30px;gap:24px">
+    <span class="chip" style="flex:1">Follows the hour of day</span>
+    <span class="chip" style="flex:1">Adapts as the seasons change</span>
+    <span class="chip" style="flex:1">Flags the night-time heater failure</span>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>8 / 12</span><b style="background:var(--r3)">R3 · Edge AI · 08:45</b></div></div>
+  <h1>Dual-layer <em>edge AI</em></h1>
+  <div class="row" style="margin-top:38px;gap:28px">
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 280" style="height:300px" data-scene="m_z"></svg><div class="cap"><b>Layer 1 · Rules + Z-score</b><span>Works from minute one · heater ON but cold → alert</span><br><span class="tag" style="background:#D8F0EC;color:#17675E">EDGE · ~0.2 KB</span></div></div>
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 280" style="height:300px" data-scene="m_ae"></svg><div class="cap"><b>Layer 2 · TinyML autoencoder</b><span>Learns how all 5 signals move together</span><br><span class="tag" style="background:#D8F0EC;color:#17675E">EDGE · ~14 KB</span></div></div>
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 540 280" style="height:300px" data-scene="m_cloud"></svg><div class="cap"><b>Cloud · learning loop</b><span>Double-checks alerts · retrains weekly</span><br><span class="tag" style="background:#FCEFD2;color:#8A5A00">CLOUD · weekly</span></div></div>
+  </div>
+  <div class="row" style="margin-top:30px;align-items:stretch">
+    <div class="strip" style="width:700px"><b>On the edge:</b> both layers decide in under 15 s, even offline. <b>In the cloud:</b> history, audits and a signed model update every week.</div>
+    <div class="tl" style="flex:1"><div><b>Day 0</b><span>Rules + Z-score</span></div><div><b>Day 1–14</b><span>Collect clean data</span></div><div><b>Day 15–28</b><span>AE in shadow mode</span></div><div><b>Day 29+</b><span>AE live · drift checks</span></div></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>9 / 12</span><b style="background:var(--r3)">R3 · Sanitization · 10:00</b></div></div>
+  <h1>Broken sensor or <em>real emergency?</em></h1>
+  <div class="row" style="margin-top:38px;gap:30px">
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 860 420" style="height:470px" data-scene="broken"></svg><div class="cap"><b>Sensor fault → quarantine</b><span>Impossible 0 % or −40 °C · maintenance ticket · no alarm</span></div></div>
+    <div class="card" style="flex:1"><svg class="ill" viewBox="0 0 860 420" style="height:470px" data-scene="emergency"></svg><div class="cap"><b>True anomaly → alert</b><span>Fast drop + a second witness (RH ↑, neighbour, vent)</span></div></div>
+  </div>
+  <div class="strip" style="margin-top:28px">★ <b>Golden rule:</b> faults are <b>quarantined, never deleted</b>, so a real frost is never thrown away as noise.</div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>10 / 12</span><b style="background:var(--r4)">R4 · Architecture · 11:15</b></div></div>
+  <h1>Sense, clean, decide. <em>Act locally.</em></h1>
+  <div class="card" style="margin-top:36px;height:640px"><svg class="ill" viewBox="0 0 1744 640" data-scene="arch"></svg></div>
+  <div class="row" style="margin-top:28px;gap:20px">
+    <span class="chip" style="flex:1">+56 KB flash per node</span><span class="chip" style="flex:1">0 s added alert delay</span><span class="chip" style="flex:1">288 KB burst on reconnect</span><span class="chip" style="flex:1">0 duplicates</span>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>11 / 12</span><b style="background:var(--r4)">R4 · Live demo · 12:30</b></div></div>
+  <h1>Simulation <em>results</em></h1>
+  <div class="row" style="margin-top:36px;gap:40px">
+    <div class="card" style="width:1100px;height:740px"><svg class="ill" viewBox="0 0 1100 740" data-scene="result"></svg></div>
+    <div class="stats" style="flex:1;display:flex;flex-direction:column">
+      <div class="stat" style="padding:26px 0;border-bottom:2px solid var(--line)"><b>0</b><span>false alarms in 6 simulated days</span></div>
+      <div class="stat" style="padding:26px 0;border-bottom:2px solid var(--line);border-left:0"><b>2–3<small>ticks</small></b><span>to catch heater, vent and pump failures</span></div>
+      <div class="stat" style="padding:26px 0;border-bottom:2px solid var(--line);border-left:0"><b>2 / 2</b><span>sensor faults filtered, no alarm</span></div>
+      <div class="stat" style="padding:26px 0;border-left:0"><b>0<small>gaps</small></b><span>after a gateway outage and burst sync</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide dark">
+  <div class="top"><div class="brand"><i></i>S-GH</div><div class="who"><span>12 / 12</span><b style="background:var(--leaf);color:#1B2A14">R4 · Summary · 13:45</b></div></div>
+  <h1>S-GH: <em>edge AI that keeps crops safe</em></h1>
+  <div class="row" style="margin-top:40px;gap:50px;align-items:center">
+    <div style="width:560px;height:440px"><svg class="ill" viewBox="0 0 560 440" data-scene="go"></svg></div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:30px">
+      <ul class="b" style="gap:26px">
+        <li style="color:#E9F2D2">Senses 5 zones × 5 signals every 30 s</li>
+        <li style="color:#E9F2D2">Cleans faulty readings before they cause alarms</li>
+        <li style="color:#E9F2D2">Detects and fixes failures in seconds, even offline</li>
+        <li style="color:#E9F2D2">Cloud keeps history and keeps the AI learning</li>
+        <li style="color:#E9F2D2">Next: 14-day pilot with 40 injected events</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:30px;height:190px"><svg class="ill" viewBox="0 0 1744 190" data-scene="road"></svg></div>
+  <p class="note abs" style="right:88px;bottom:36px;font-size:24px;color:#E9F2D2">Thank you</p>
+</section>
+
+<script src="illustrations.js"></script>
+<script src="scenes.js"></script>
+</body>
+</html>

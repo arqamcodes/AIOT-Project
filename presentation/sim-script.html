@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>S-GH Simulation Demo Script</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:16mm 16mm 16mm 16mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,'Segoe UI',sans-serif;color:#1B2418;font-size:11.5pt;line-height:1.58;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:12pt;margin-bottom:18px}
+.brand i{width:24px;height:24px;border-radius:50%;background:#2F5E1A;display:inline-grid;place-items:center}
+.brand i:after{content:"";width:8px;height:11px;border-radius:50%;background:#B9E27A}
+h1{font-size:30pt;font-weight:500;line-height:1.08;letter-spacing:-.03em}
+h1 em{font-style:normal;color:#4E8A1E}
+.sub{font-size:12pt;color:#55624B;margin:8px 0 16px}
+h2{font-size:15pt;font-weight:700;letter-spacing:-.01em;margin:18px 0 10px;display:flex;align-items:center;gap:10px}
+h2 span{font-size:10pt;font-weight:600;color:#fff;background:#2F5E1A;border-radius:99px;padding:3px 10px}
+.box{border:1.5px solid #E2E7D6;border-radius:14px;padding:12px 15px;margin-bottom:10px;break-inside:avoid}
+.box h3{font-size:12pt;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.box h3 small{font-size:9pt;font-weight:600;color:#55624B;background:#EEF1E4;padding:2px 9px;border-radius:99px;white-space:nowrap}
+.box p{margin-bottom:6px}.box p:last-child{margin-bottom:0}
+.box ul{margin:2px 0 6px 20px}.box li{margin-bottom:3px}
+.do{display:block;background:#EAF4F1;color:#17675E;border-radius:10px;padding:7px 11px;font-weight:600;font-size:10.5pt;margin-bottom:8px}
+.say{border-left:4px solid #8CC63F;padding-left:12px}
+.look{display:block;background:#FFF6DF;color:#6B4A00;border-radius:10px;padding:7px 11px;font-size:10.5pt;margin-top:8px}
+.red{border-color:#F2C8C3}.amb{border-color:#F4DDA0}.teal{border-color:#A9D6CE}
+.keys{display:grid;grid-template-columns:120px 1fr;border:1.5px solid #E2E7D6;border-radius:14px;overflow:hidden;font-size:10.5pt}
+.keys div{padding:7px 12px;border-bottom:1px solid #EEF1E4}.keys div:nth-child(odd){font-weight:700;background:#F6F8EF}
+.pb{break-before:page}
+strong{font-weight:700}
+.foot{font-size:9pt;color:#8A9680;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="brand"><i></i>S-GH · Live simulation demo</div>
+<h1>Simulation script<br><em>How the live demo works</em></h1>
+<p class="sub">Easy language · about 5 minutes · presented by Ali (R4) · open the website and scroll to <strong>"Break it. Watch it react."</strong></p>
+
+<div class="box">
+  <span class="do">How to read this script</span>
+  <ul>
+    <li><span style="background:#EAF4F1;color:#17675E;border-radius:6px;padding:1px 6px;font-weight:600">Green-blue box</span> = what to <strong>click or do</strong>.</li>
+    <li><strong>Normal text</strong> = what to <strong>say</strong>.</li>
+    <li><span style="background:#FFF6DF;color:#6B4A00;border-radius:6px;padding:1px 6px">Yellow box</span> = what the audience should <strong>look at</strong> on screen.</li>
+  </ul>
+</div>
+
+<h2>Part 1 · What is this simulation? <span>~30 s</span></h2>
+<div class="box">
+  <div class="say">
+    <p>"This is our <strong>live simulation</strong>: a pretend greenhouse running inside the web browser. We have no real hardware, so the computer acts like a real greenhouse.</p>
+    <p>It uses simple <strong>physics</strong>. The sun heats the glass, heat escapes at night, the heater adds warmth, the roof windows let hot air out, and the pump waters the soil. So when we break something, the greenhouse reacts the way a real one would.</p>
+    <p>Time runs fast here: <strong>every 1.5 seconds on screen is 6 minutes</strong> in the greenhouse. A full day passes in about 6 minutes."</p>
+  </div>
+</div>
+
+<h2>Part 2 · A tour of the screen <span>~1.5 min</span></h2>
+
+<div class="box">
+  <h3>The buttons on top</h3>
+  <div class="say"><p>"These buttons are our <strong>scenarios</strong>. Each one breaks something on purpose so we can see how the system reacts. They are grouped as <strong>Baseline</strong> (normal), <strong>True anomalies</strong> (real problems), <strong>Sensor faults</strong> (broken sensors) and <strong>Network</strong> (internet off).</p>
+  <p>On the right is the <strong>clock</strong> (time and day in the greenhouse), the <strong>speed</strong> (1× or 3×), <strong>pause</strong>, and <strong>reset</strong>."</p></div>
+</div>
+
+<div class="box">
+  <h3>The greenhouse picture</h3>
+  <div class="say"><p>"This is our greenhouse with <strong>5 zones</strong> (rooms): Tomato, Basil, Lettuce, Pepper and Mint. Each zone shows its <strong>temperature</strong> in big numbers, with humidity and CO₂ below.</p>
+  <ul>
+    <li>The small black box with a light is the <strong>sensor box</strong>. Its light is <strong>green</strong> when OK, <strong>amber</strong> for a sensor fault and <strong>red</strong> for an alert.</li>
+    <li>The <strong>roof windows (vents) open</strong> when it gets warm and close when it's cold.</li>
+    <li>The <strong>heater pipes glow orange</strong> when the heater is on, the <strong>fans spin</strong> when cooling, and <strong>water drops</strong> fall when the pump waters the soil.</li>
+    <li>The <strong>sky changes</strong> with time: sun in the day, moon and stars at night.</li>
+    <li>The little <strong>glowing dots</strong> are data messages flying to the <strong>edge gateway</strong> (the post-office box on the pole) and then up to the <strong>cloud</strong>."</li>
+  </ul></div>
+  <span class="look">Look: the small chips at the top-left show the outside temperature, how strong the sun is, and how cloudy it is.</span>
+</div>
+
+<div class="box">
+  <h3>The zone cards (below the greenhouse)</h3>
+  <div class="say"><p>"Each card is one zone. It shows the temperature, a small line of recent history, humidity, soil wetness and CO₂, and a status tag: <strong>OK</strong>, <strong>FAULT</strong> or <strong>ALERT</strong>. Clicking a card or a zone <strong>focuses</strong> it, so all the panels below show that zone."</p></div>
+</div>
+
+<div class="box">
+  <h3>The chart and the AI panel</h3>
+  <div class="say"><ul>
+    <li><strong>Chart:</strong> the last 8 hours of the chosen zone. The <strong>green line</strong> is temperature, the <strong>light green band</strong> is what the AI <em>expects</em>, the teal line is humidity, and the <strong>red area at the bottom is the danger score</strong>. Night hours are shaded dark.</li>
+    <li><strong>Dual-layer AI rings:</strong> the inner ring is <strong>Layer 1 (rules)</strong>, the outer ring is <strong>Layer 2 (the autoencoder)</strong>, and the number in the middle is the <strong>danger score</strong>. If it reaches <strong>0.60</strong>, we raise an alert.</li>
+    <li><strong>Actual vs expected:</strong> for each sensor, the dot is the real value and the green mark is what the AI expected. A <strong>red dot</strong> means "this one looks wrong"."</li>
+  </ul></div>
+</div>
+
+<div class="box">
+  <h3>The bottom panels</h3>
+  <div class="say"><ul>
+    <li><strong>Edge pipeline:</strong> the steps every reading goes through: Sensors → Cleaning (Stage 5) → Layer 1 rules → Layer 2 AI → Decision → Action and sending. Each box lights up as data passes.</li>
+    <li><strong>MQTT inspector:</strong> the actual message being sent: zone, temperature, humidity, soil, CO₂, light. It's only about <strong>106 bytes</strong>, and <strong>QoS 1</strong> means it must be confirmed as received.</li>
+    <li><strong>Ring buffer:</strong> the <strong>24-hour backup memory</strong>, drawn as a ring of 24 hours. It fills up only when the internet is off.</li>
+    <li><strong>Event log:</strong> a diary of everything that happened, with times."</li>
+  </ul></div>
+</div>
+
+<div class="box teal">
+  <h3>The AI training box (when the page first opens)</h3>
+  <div class="say"><p>"When the page opens, you briefly see <strong>'Training autoencoder'</strong> with a line going down. The AI is <strong>learning right here in the browser</strong> from 3 days of normal greenhouse data. Until it finishes, only the simple rules protect the plants. We call this the <strong>cold start</strong>."</p></div>
+</div>
+
+<h2 class="pb">Part 3 · Breaking things on purpose <span>~3 min</span></h2>
+
+<div class="box">
+  <h3>1 · Normal day <small>key 1</small></h3>
+  <span class="do">Click "Normal day" (or press 1).</span>
+  <div class="say"><p>"Everything is fine. All zones are <strong>green and OK</strong>. The temperature follows a normal day: warm in the afternoon, cool at night. The danger score stays near <strong>zero</strong>, so there are <strong>no false alarms</strong>."</p></div>
+</div>
+
+<div class="box red">
+  <h3>2 · Heater failure at night <small>key 2 · Zone 3 Lettuce</small></h3>
+  <span class="do">Click "Heater failure". The clock jumps to night automatically.</span>
+  <div class="say"><p>"It's night and the <strong>heater in Zone 3 breaks</strong>. Watch the temperature fall. <strong>Frost</strong> starts to form on the glass and the plants turn bluish.</p>
+  <p>Within a few seconds the zone turns <strong>red with an ALERT</strong> and a red banner explains it in plain words: <em>'Zone 3 is colder than expected while the heater is ON.'</em></p>
+  <p>Then the system <strong>fixes it by itself</strong>: it closes the vents and switches on the <strong>backup heater</strong>, and you can see the pipes glow orange. The temperature comes back up and the alert clears."</p></div>
+  <span class="look">Look: the red outline on Zone 3, the score ring going red, and the event log line "ALERT … backup heater ON".</span>
+</div>
+
+<div class="box red">
+  <h3>3 · Roof window (vent) jammed <small>key 3 · Zone 4 Pepper</small></h3>
+  <span class="do">Click "Vent jammed". The clock jumps to a sunny morning.</span>
+  <div class="say"><p>"On a sunny morning the greenhouse heats up, so the roof window <strong>should open</strong> to let hot air out. But in Zone 4 the window is <strong>stuck shut</strong>.</p>
+  <p>The system notices that the window was <strong>told to open but didn't move</strong>, and the zone keeps getting hotter. It raises an alert, then turns on the <strong>fans</strong> and closes a <strong>shade screen</strong> to cool the plants."</p></div>
+  <span class="look">Look: the fans start spinning in Zone 4 and the alert says the vents were commanded open but aren't moving.</span>
+</div>
+
+<div class="box red">
+  <h3>4 · Water pump failure <small>key 4 · Zone 5 Mint</small></h3>
+  <span class="do">Click "Pump failure". The clock jumps to just before watering time.</span>
+  <div class="say"><p>"Plants are watered automatically at set times. Here the <strong>pump in Zone 5 breaks</strong>, so at watering time no water comes and the soil doesn't get wetter.</p>
+  <p>A rule notices that <strong>watering was supposed to happen, but the soil stayed dry</strong>. It raises an alert and starts a <strong>backup pump</strong>. Now you can see water drops falling and the soil getting wet again."</p></div>
+</div>
+
+<div class="box amb">
+  <h3>5 · Broken humidity sensor (stuck at 0%) <small>key 5 · Zone 2 Basil</small></h3>
+  <span class="do">Click "RH stuck 0 %".</span>
+  <div class="say"><p>"Now the <strong>sensor itself is broken</strong>: Zone 2's humidity sensor suddenly says <strong>0%</strong>. That's impossible inside a greenhouse.</p>
+  <p>Our cleaning step (Stage 5) catches it. The zone shows an amber <strong>SENSOR FAULT</strong>, but there is <strong>no alarm</strong>, because the plants are fine. It only asks for a repair.</p>
+  <p>Look at the AI panel: the <strong>raw, uncleaned score would be 1.00</strong>, a false alarm, but after cleaning the real score stays low. That's why cleaning matters."</p></div>
+  <span class="look">Look: in the message inspector the bad value is highlighted in yellow, and the chart shows the raw humidity line dropping while the cleaned line stays normal.</span>
+</div>
+
+<div class="box amb">
+  <h3>6 · One crazy reading (−40 °C glitch) <small>key 6 · Zone 1 Tomato</small></h3>
+  <span class="do">Click "Glitch −40 °C".</span>
+  <div class="say"><p>"Sometimes a sensor gives <strong>one crazy reading</strong>, like −40 °C, because of a loose wire. Stage 5 sees it is impossible, <strong>ignores that one reading</strong>, and the next normal reading continues. Again, <strong>no false alarm</strong>."</p></div>
+</div>
+
+<div class="box teal">
+  <h3>7 · Internet goes off, then comes back <small>key 7</small></h3>
+  <span class="do">Click "Gateway offline". Wait a few seconds, then click "Reconnect gateway".</span>
+  <div class="say"><p>"Now the <strong>internet goes off</strong>. The line to the cloud turns red with an X. But the greenhouse <strong>keeps working</strong>: it still checks the plants and still fixes problems by itself.</p>
+  <p>Every sensor box saves its readings in its <strong>24-hour backup memory</strong>. You can see the ring buffer filling up and the stack of bars next to the gateway growing.</p>
+  <p>When I reconnect, all the saved data is <strong>sent in one quick burst</strong>, the buffer empties, and the log says <strong>'0 gaps, 0 duplicates'</strong>, so nothing was lost or doubled."</p></div>
+  <span class="look">Tip: press 2 while offline to show that the heater alert still works with no internet.</span>
+</div>
+
+<div class="box">
+  <h3>Back to normal <small>key 1</small></h3>
+  <span class="do">Click "Normal day" to clear everything.</span>
+  <div class="say"><p>"All problems are cleared and the greenhouse is back to a normal day.</p>
+  <p>So in our simulation we tested <strong>3 real problems</strong> (heater, roof window, pump), <strong>2 broken-sensor cases</strong>, and <strong>internet loss</strong>. The system caught every real problem in seconds, fixed it by itself, ignored broken sensors without false alarms, and lost no data. Thank you!"</p></div>
+</div>
+
+<h2>Shortcut keys <span>handy during the demo</span></h2>
+<div class="keys">
+  <div>1 – 7</div><div>Start the scenarios: 1 Normal, 2 Heater, 3 Vent, 4 Pump, 5 RH stuck, 6 Glitch, 7 Internet off/on</div>
+  <div>Space</div><div>Pause or play the simulation (useful while explaining)</div>
+  <div>R</div><div>Reset the simulation</div>
+  <div>← / →</div><div>Switch the focused zone</div>
+  <div>1× / 3×</div><div>Normal speed or 3 times faster</div>
+  <div>Click a zone</div><div>Focus that zone in the chart, AI panel and message inspector</div>
+</div>
+<p class="foot">S-GH · Greenhouse Microclimate Anomaly Detector · Simulation demo script</p>
+
+</body>
+</html>

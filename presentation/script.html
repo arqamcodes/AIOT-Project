@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>S-GH Presentation Script</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:17mm 17mm 17mm 17mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,'Segoe UI',sans-serif;color:#1B2418;font-size:12pt;line-height:1.6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cover{height:260mm;display:flex;flex-direction:column;justify-content:space-between;padding:4mm 2mm;break-after:page}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:13pt}
+.brand i{width:26px;height:26px;border-radius:50%;background:#2F5E1A;display:inline-grid;place-items:center}
+.brand i:after{content:"";width:8px;height:12px;border-radius:50%;background:#B9E27A}
+.cover h1{font-size:38pt;font-weight:500;line-height:1.05;letter-spacing:-.03em}
+.cover h1 em{font-style:normal;color:#4E8A1E}
+.cover .sub{font-size:13pt;color:#55624B;margin-top:10px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.team div{border:1.5px solid #E2E7D6;border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.team b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10pt;flex:none}
+.team span{font-weight:700}.team small{display:block;color:#55624B;font-weight:500;font-size:9.5pt}
+.tips{background:#F2F5E8;border-radius:16px;padding:16px 18px;font-size:11pt}
+.tips b{display:block;margin-bottom:6px}
+.tips li{margin-left:16px;margin-bottom:3px}
+.sp{break-before:page}
+.sphead{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;color:#fff;margin-bottom:16px}
+.sphead b{font-size:18pt;font-weight:600;letter-spacing:-.02em}
+.sphead span{font-size:10pt;opacity:.9;display:block}
+.sphead i{font-style:normal;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-weight:800}
+.slide{border:1.5px solid #E2E7D6;border-radius:14px;padding:14px 16px;margin-bottom:12px;break-inside:avoid}
+.slide h3{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5pt;font-weight:700;margin-bottom:8px}
+.slide h3 small{font-size:9pt;font-weight:600;color:#55624B;background:#EEF1E4;padding:3px 9px;border-radius:99px}
+.slide p{margin-bottom:7px}
+.slide p:last-child{margin-bottom:0}
+.slide ul{margin:2px 0 8px 20px}
+.slide li{margin-bottom:3px}
+.term{display:inline;background:#FFF6DF;border-radius:6px;padding:1px 6px;font-size:10.5pt;color:#6B4A00}
+.hand{background:#F2F5E8;border-radius:10px;padding:8px 12px;font-weight:600;color:#2F5E1A}
+strong{font-weight:700}
+.gl{display:grid;grid-template-columns:150px 1fr;border:1.5px solid #E2E7D6;border-radius:14px;overflow:hidden}
+.gl div{padding:9px 14px;border-bottom:1px solid #EEF1E4;font-size:11pt}
+.gl div:nth-child(odd){font-weight:700;background:#F6F8EF}
+.foot{font-size:9pt;color:#8A9680;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="brand"><i></i>S-GH · AIoT Project</div>
+  <div>
+    <h1>Presentation script<br><em>Greenhouse Microclimate Anomaly Detector</em></h1>
+    <p class="sub">Easy-language script · 12 slides · about 12–15 minutes · 4 speakers</p>
+    <div class="team">
+      <div><b style="background:#E0A21F">1</b><span>Shayan<small>Slides 1–3 · The problem</small></span></div>
+      <div><b style="background:#2A9D8F">2</b><span>Arqam<small>Slides 4–6 · Sensors &amp; data</small></span></div>
+      <div><b style="background:#E0567A">3</b><span>Hussain<small>Slides 7–9 · The AI</small></span></div>
+      <div><b style="background:#5E8F2F">4</b><span>Ali<small>Slides 10–12 · System &amp; results</small></span></div>
+    </div>
+  </div>
+  <div class="tips">
+    <b>Tips</b>
+    <ul>
+      <li>Speak slowly. Point at the picture on the slide.</li>
+      <li><span class="term">Yellow boxes</span> explain a technical word. Say that short explanation out loud too.</li>
+      <li>Say the green hand-off line at the end so the next speaker can start.</li>
+      <li>All the hard words are explained again on the last page.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SPEAKER 1 -->
+<section class="sp">
+  <div class="sphead" style="background:#D9951A"><i>1</i><div><b>Shayan</b><span>Slides 1–3 · starts at 0:00</span></div></div>
+
+  <div class="slide"><h3>Slide 1 · Title <small>0:00</small></h3>
+    <p>"Assalam-o-Alaikum everyone. Our project is called <strong>S-GH, the Greenhouse Microclimate Anomaly Detector</strong>.</p>
+    <p>A <strong>greenhouse</strong> is a glass house for growing plants. <span class="term">Microclimate</span> means the weather inside it: heat, wetness, air and light. An <span class="term">anomaly</span> means something going wrong.</p>
+    <p>So our system watches the weather inside a greenhouse and <strong>warns and fixes problems in seconds</strong>, even with no internet. It is all a <strong>computer simulation</strong>; we used no real hardware."</p>
+  </div>
+
+  <div class="slide"><h3>Slide 2 · The problem <small>1:00</small></h3>
+    <p>"Look at these three pictures:</p>
+    <ul>
+      <li><strong>At night the heater breaks.</strong> It gets very cold and the plants freeze.</li>
+      <li><strong>In the morning a roof window stays shut.</strong> It gets too hot and the plants burn.</li>
+      <li><strong>The internet stops.</strong> Normally the data would be lost.</li>
+    </ul>
+    <p>Our greenhouse has <strong>5 parts, called zones</strong>. Each zone has <strong>5 sensors</strong> that check it <strong>every 30 seconds</strong>. <span class="term">Sensor = a small device that measures something, like a thermometer.</span>"</p>
+  </div>
+
+  <div class="slide"><h3>Slide 3 · Our goals <small>2:00</small></h3>
+    <p>"We set five simple goals:</p>
+    <ul>
+      <li>Warn about a problem in <strong>less than 15 seconds</strong>.</li>
+      <li>Save <strong>one full day of data</strong> if the internet goes off.</li>
+      <li>Keep every message <strong>very small</strong>, under 200 bytes, like a short text message.</li>
+      <li>Fit on a <strong>small, cheap chip</strong> (a mini computer).</li>
+      <li>Give <strong>no more than one false alarm a day</strong>."</li>
+    </ul>
+    <p class="hand">→ "Now Arqam will show our sensors and how the data travels."</p>
+  </div>
+</section>
+
+<!-- SPEAKER 2 -->
+<section class="sp">
+  <div class="sphead" style="background:#2A9D8F"><i>2</i><div><b>Arqam</b><span>Slides 4–6 · starts at about 3:00</span></div></div>
+
+  <div class="slide"><h3>Slide 4 · Our sensors <small>3:00</small></h3>
+    <p>"Thank you, Shayan. These are our sensors. They are real products, but we simulate them in the computer:</p>
+    <ul>
+      <li><strong>SHT45</strong>: measures <strong>temperature and humidity</strong>. <span class="term">Humidity = how much water is in the air.</span></li>
+      <li><strong>SCD40</strong>: measures <strong>CO₂</strong>. <span class="term">CO₂ = the gas plants breathe in to grow.</span></li>
+      <li><strong>Soil probe</strong>: a stick in the soil that checks <strong>how wet the soil is</strong>.</li>
+      <li><strong>BH1750</strong>: measures <strong>sunlight</strong>.</li>
+      <li><strong>ESP32</strong>: a <strong>tiny, cheap computer chip</strong> (about $10) that reads all the sensors.</li>
+    </ul>
+    <p>From a problem starting to a fan or heater switching on takes only about <strong>6 seconds</strong>."</p>
+  </div>
+
+  <div class="slide"><h3>Slide 5 · How data travels <small>4:15</small></h3>
+    <p>"Think of it like a <strong>post office</strong>. Each zone sends small letters with its readings.</p>
+    <ul>
+      <li>The letters go to the <strong>edge gateway</strong>. <span class="term">Edge gateway = a small box inside the greenhouse that collects all the messages, like a local post office.</span></li>
+      <li>Then they go to the <strong>cloud</strong>. <span class="term">Cloud = big computers on the internet that store data.</span></li>
+      <li>We send them using <strong>MQTT</strong>. <span class="term">MQTT = a simple messaging system for small devices, like WhatsApp for machines.</span></li>
+      <li><strong>QoS 1</strong> means every message gets a "received" reply. If it is lost, it is sent again.</li>
+    </ul>
+    <p>The padlock means the connection is <strong>locked and secure</strong>, so nobody can read or fake our data."</p>
+  </div>
+
+  <div class="slide"><h3>Slide 6 · How much data <small>5:15</small></h3>
+    <p>"Each message is only <strong>106 bytes</strong>. That's smaller than one WhatsApp text.</p>
+    <ul>
+      <li>All 5 zones send <strong>14,400 messages a day</strong>, but that is only about <strong>1.5 MB</strong>, less than one photo.</li>
+      <li>If the internet goes off, each box <strong>saves its readings like a diary</strong>, enough for <strong>24 hours</strong>.</li>
+      <li>When the internet comes back, it <strong>sends everything at once</strong>, with nothing lost."</li>
+    </ul>
+    <p class="hand">→ "Now Hussain will explain the brain of our system, the AI."</p>
+  </div>
+</section>
+
+<!-- SPEAKER 3 -->
+<section class="sp">
+  <div class="sphead" style="background:#D64B6E"><i>3</i><div><b>Hussain</b><span>Slides 7–9 · starts at about 6:15</span></div></div>
+
+  <div class="slide"><h3>Slide 7 · The AI learns what is normal <small>6:15</small></h3>
+    <p>"Thank you, Arqam. <span class="term">AI = a computer program that learns from data.</span></p>
+    <p>Our AI learns what a <strong>normal day</strong> looks like. In the chart, the <strong>green band</strong> is what the AI expects: warm in the day, cool at night. The <strong>black line</strong> is the real temperature.</p>
+    <p>When the heater breaks at night, the black line <strong>falls out of the green band</strong>. The AI notices straight away and gives an <strong>alert</strong>, the red dot."</p>
+  </div>
+
+  <div class="slide"><h3>Slide 8 · Two layers of AI <small>7:15</small></h3>
+    <p>"Our AI works like <strong>two security guards</strong> inside the greenhouse:</p>
+    <ul>
+      <li><strong>Guard 1, simple rules.</strong> For example: "Heater is ON but it is getting colder? Something is wrong!" This works from day one.</li>
+      <li><strong>Guard 2, the autoencoder.</strong> <span class="term">Autoencoder = a small AI that learns what normal readings look like and notices when something is different.</span> It is tiny, only 14 KB.</li>
+      <li><strong>The cloud</strong> keeps all old data and <strong>teaches the AI again every week</strong>, so it keeps getting better."</li>
+    </ul>
+  </div>
+
+  <div class="slide"><h3>Slide 9 · Broken sensor or real problem? <small>8:15</small></h3>
+    <p>"Sometimes the <strong>sensor itself breaks</strong>.</p>
+    <ul>
+      <li><strong>Left picture:</strong> the humidity sensor shows <strong>0%</strong>. That is impossible, so the sensor is broken. We <strong>don't ring the alarm</strong>; we just ask someone to repair it.</li>
+      <li><strong>Right picture:</strong> real frost. The temperature drops <strong>and</strong> the humidity goes up at the same time. Two signs together prove it's real, so the <strong>alarm rings</strong> and the <strong>heater turns on</strong>.</li>
+    </ul>
+    <p>Our rule: <strong>we never delete strange data; we only mark it</strong>, so real problems are never missed."</p>
+    <p class="hand">→ "Now Ali will show the full system and our results."</p>
+  </div>
+</section>
+
+<!-- SPEAKER 4 -->
+<section class="sp">
+  <div class="sphead" style="background:#4E8A1E"><i>4</i><div><b>Ali</b><span>Slides 10–12 · starts at about 9:15</span></div></div>
+
+  <div class="slide"><h3>Slide 10 · The full system <small>9:15</small></h3>
+    <p>"Thank you, Hussain. Read this picture from left to right.</p>
+    <ul>
+      <li><strong>Green area, inside the greenhouse:</strong> sensors measure, then bad readings are cleaned out, then the AI decides, then fans or heaters switch on in seconds.</li>
+      <li><strong>Blue area, the cloud:</strong> stores all the data, shows charts on a <strong>dashboard</strong> and sends <strong>alerts to the farmer's phone</strong>. <span class="term">Dashboard = a screen with live charts.</span></li>
+    </ul>
+    <p>The most important idea: <strong>decisions are made inside the greenhouse</strong>. So even with no internet, the plants stay safe."</p>
+  </div>
+
+  <div class="slide"><h3>Slide 11 · Results <small>10:15</small></h3>
+    <p>"We built a working simulation. <span class="term">Simulation = a pretend greenhouse made in the computer that behaves like a real one.</span></p>
+    <p>In the picture, the <strong>heater in Zone 3 broke at night</strong>. Our system noticed and <strong>turned on the backup heater by itself</strong> in about 6 seconds.</p>
+    <ul>
+      <li><strong>0 false alarms</strong> in 6 test days.</li>
+      <li><strong>Every real problem was caught</strong>: heater, roof window and water pump.</li>
+      <li>Broken sensors were <strong>ignored safely</strong>.</li>
+      <li><strong>No data was lost</strong> when the internet went off."</li>
+    </ul>
+  </div>
+
+  <div class="slide"><h3>Slide 12 · Summary <small>11:15</small></h3>
+    <p>"So our system <strong>watches, cleans, decides and fixes</strong>, all in seconds, even without internet. The cloud helps it <strong>keep learning</strong>.</p>
+    <p>The road at the bottom shows our next steps, from simulation to a real greenhouse.</p>
+    <p>In short, <strong>our greenhouse takes care of itself, so the farmer can sleep peacefully.</strong>"</p>
+    <p class="hand">"Thank you! Any questions?"</p>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section class="sp">
+  <div class="sphead" style="background:#2F5E1A"><i>?</i><div><b>Easy words</b><span>All the technical words, explained simply</span></div></div>
+  <div class="gl">
+    <div>Greenhouse</div><div>A glass house where plants are grown.</div>
+    <div>Microclimate</div><div>The weather inside the greenhouse: heat, wetness, air and light.</div>
+    <div>Anomaly</div><div>Something unusual or going wrong.</div>
+    <div>AIoT</div><div>AI + IoT: smart devices that measure things and a computer brain that understands them.</div>
+    <div>IoT</div><div>Internet of Things: small devices connected to the internet.</div>
+    <div>Sensor</div><div>A small device that measures something, like a thermometer.</div>
+    <div>Zone</div><div>One part (room) of the greenhouse. We have 5.</div>
+    <div>Humidity (RH)</div><div>How much water is in the air.</div>
+    <div>CO₂</div><div>The gas plants breathe in to make food.</div>
+    <div>SHT45</div><div>Sensor for temperature and humidity.</div>
+    <div>SCD40</div><div>Sensor for CO₂.</div>
+    <div>BH1750</div><div>Sensor for sunlight.</div>
+    <div>Soil probe</div><div>A stick in the soil that checks how wet the soil is.</div>
+    <div>ESP32</div><div>A tiny, cheap computer chip that reads the sensors.</div>
+    <div>Edge</div><div>Inside the greenhouse, close to the plants (not on the internet).</div>
+    <div>Edge gateway</div><div>A small box in the greenhouse that collects all messages, like a local post office.</div>
+    <div>Cloud</div><div>Big computers on the internet that store data.</div>
+    <div>MQTT</div><div>A simple messaging system for small devices, like WhatsApp for machines.</div>
+    <div>QoS 1</div><div>Every message gets a "received" reply; if lost, it is sent again.</div>
+    <div>TLS / padlock</div><div>A locked, secret connection so nobody can read or fake the data.</div>
+    <div>Byte / KB / MB</div><div>Sizes of data. 1 KB ≈ 1,000 bytes, 1 MB ≈ 1,000 KB. A photo is a few MB.</div>
+    <div>Buffer</div><div>Saved data kept on the device, like a diary, until the internet is back.</div>
+    <div>Autoencoder</div><div>A small AI that learns what normal looks like and notices when something is different.</div>
+    <div>False alarm</div><div>An alarm when nothing is actually wrong.</div>
+    <div>Dashboard</div><div>A screen with live charts and numbers.</div>
+    <div>Simulation</div><div>A pretend greenhouse made in the computer that behaves like a real one.</div>
+  </div>
+  <p class="foot">S-GH · Greenhouse Microclimate Anomaly Detector · Presentation script</p>
+</section>
+
+</body>
+</html>
