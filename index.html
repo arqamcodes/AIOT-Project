@@ -819,6 +819,12 @@ svg{max-width:100%}
 html.touring .topbar{opacity:0!important;pointer-events:none}
 html.touring .dots{opacity:0}
 @media (max-width:640px){.tcap p{padding-right:0;padding-bottom:36px}.tcap h4{font-size:17px}.tcap p{font-size:13.5px}}
+.plat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pj{padding:22px;display:flex;flex-direction:column;gap:12px}
+.pjh{display:flex;align-items:center;gap:12px}.pjh svg{width:34px;height:34px;padding:7px;border-radius:10px;background:#EEF6DF;color:var(--leaf2)}.pjh b{font-size:18px;font-weight:600}
+.pjr{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:start;font-size:14px;line-height:1.45}
+.pjr .tag{justify-content:center}
+@media (max-width:900px){.plat{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -831,7 +837,7 @@ html.touring .dots{opacity:0}
     S-GH
   </a>
   <nav class="navlinks" id="navlinks">
-    <a href="#problem">Problem</a><a href="#telemetry">Telemetry</a><a href="#ai">AI</a><a href="#sanitize">Sanitize</a><a href="#sandbox">Live demo</a><a href="#cloud">Cloud</a><a href="#arch">Architecture</a>
+    <a href="#problem">Problem</a><a href="#telemetry">Telemetry</a><a href="#ai">AI</a><a href="#sanitize">Sanitize</a><a href="#sandbox">Live demo</a><a href="#cloud">Platform</a><a href="#arch">Architecture</a>
   </nav>
   <div class="nowchip"><i id="nowIcon">R1</i><span id="nowText">Team intro</span></div>
 </header>
@@ -843,7 +849,7 @@ html.touring .dots{opacity:0}
   <div class="panel4">
     <header class="nav4">
       <a href="#home" class="brand4"><svg viewBox="0 0 32 32" width="24" height="24"><circle cx="16" cy="16" r="15" fill="#2F5E1A"/><path d="M16 8c-4 4-4 9 0 12 4-3 4-8 0-12z" fill="#B9E27A"/><path d="M16 24v-4" stroke="#B9E27A" stroke-width="2" stroke-linecap="round"/></svg>S-GH</a>
-      <nav class="pill4"><a href="#home" class="on">Home</a><a href="#problem">Problem</a><a href="#telemetry">Edge</a><a href="#ai">AI</a><a href="#sandbox">Live demo</a><a href="#cloud">Cloud</a></nav>
+      <nav class="pill4"><a href="#home" class="on">Home</a><a href="#problem">Problem</a><a href="#telemetry">Edge</a><a href="#ai">AI</a><a href="#sandbox">Live demo</a><a href="#cloud">Platform</a></nav>
     </header>
 
     <div class="intro4">
@@ -1047,24 +1053,19 @@ html.touring .dots{opacity:0}
 <section class="s" id="ai" data-sp="3">
   <div class="wrap">
     <span class="eyebrow rv">Stage 4 <span class="who" style="background:var(--r3);color:#fff">R3 · AI engine</span></span>
-    <h2 class="rv" style="--d:.08s">Fixed thresholds<br><span class="g">can’t read the clock.</span></h2>
+    <h2 class="rv" style="--d:.08s">It learns what<br><span class="g">normal looks like.</span></h2>
     <div class="card mt rv">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
-        <div class="legend" style="color:var(--muted)"><span><i style="background:#1E2A1B"></i>Zone temp</span><span><i style="background:#D8453A;opacity:.6"></i>Fixed 5 / 30 °C limits</span><span><i style="background:#93C556;height:10px;opacity:.5"></i>Learned normal band</span></div>
-        <div class="chips"><span class="tag amber">2 false alarms</span><span class="tag red">1 missed failure</span><span class="tag">AE band: 0 / 0</span></div>
+        <div class="legend" style="color:var(--muted)"><span><i style="background:#1E2A1B"></i>Zone temp</span><span><i style="background:#93C556;height:10px;opacity:.5"></i>Learned normal band</span></div>
+        <div class="chips"><span class="tag">Follows the hour of day</span><span class="tag">Adapts to seasons</span><span class="tag red">Flags the heater failure</span></div>
       </div>
       <svg viewBox="0 0 960 280" style="width:100%;margin-top:10px" id="thrChart"></svg>
     </div>
 
     <div class="mt" style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:10px">
-      <h3 class="rv">Three candidates</h3><span class="sub rv">ESP32 limit: 520 KB SRAM · REQ-04</span>
+      <h3 class="rv">Dual-layer edge AI</h3><span class="sub rv">Fits the ESP32 · 520 KB SRAM · REQ-04</span>
     </div>
     <div class="models mt-s" id="models"></div>
-    <div class="verdict-strip mt-s rv">
-      <span class="tag" style="background:var(--leaf);color:var(--ink)">HYBRID</span>
-      <span><b>Edge:</b> Z-score (day 0) + int8 autoencoder (~14 KB) → alerts in &lt; 15 s, offline-safe.</span>
-      <span><b>Cloud:</b> Isolation Forest audits + weekly retrain.</span>
-    </div>
 
     <div class="grid mt" style="grid-template-columns:1fr 1fr">
       <div class="card rv rv-l">
@@ -1072,7 +1073,7 @@ html.touring .dots{opacity:0}
         <div class="timeline mt-s">
           <div class="tl"><b>Day 0</b><span>Physics rules + rolling Z-score</span></div>
           <div class="tl"><b>Day 1–14</b><span>Collect sanitized “normal” · inject synthetic faults</span></div>
-          <div class="tl"><b>Day 15–28</b><span>AE in shadow mode, compare alerts</span></div>
+          <div class="tl"><b>Day 15–28</b><span>AE runs quietly in shadow mode</span></div>
           <div class="tl"><b>Day 29+</b><span>AE live · weekly drift check</span></div>
         </div>
         <div class="chips" style="margin-top:20px"><span class="chip">Retrain if PSI &gt; 0.2</span><span class="chip">or false alarms &gt; 2/day</span><span class="chip">or season change</span></div>
@@ -1117,15 +1118,8 @@ html.touring .dots{opacity:0}
   <div class="wrap">
     <span class="eyebrow rv">Stage 5 <span class="who" style="background:var(--r3);color:#fff">R3 · Data sanitization</span></span>
     <h2 class="rv" style="--d:.08s">Broken sensor or<br><span class="g">real emergency?</span></h2>
-    <div class="mt rv" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <div class="toggle" id="faultToggle"><span class="knob"></span><button type="button" data-m="naive">Naïve glitch filter</button><button type="button" data-m="s5" class="on">Stage 5 rules</button></div>
-      <span class="sub" id="faultScore"></span>
-    </div>
-    <div class="matrix mt-s" id="matrix"></div>
+    <div class="matrix mt" id="matrix"></div>
     <div class="golden mt-s rv"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8A5A00" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><span><b>Golden rule:</b> a fault is <b>quarantined</b> (flag q=2), never deleted. A fast drop with a second witness (RH ↑, neighbour, vent state) is always an <b>anomaly</b>.</span></div>
-
-    <h3 class="mt rv">Privacy &amp; governance</h3>
-    <div class="priv mt-s" id="priv"></div>
 
     <div class="handoff rv"><div>Hand-off <i style="background:var(--r3);color:#fff">R3</i> → <i style="background:var(--r4);color:#fff">R4</i> <b>Live demo &amp; cloud</b></div></div>
   </div>
@@ -1240,21 +1234,10 @@ html.touring .dots{opacity:0}
 <!-- ================= R4: CLOUD ================= -->
 <section class="s" id="cloud" data-sp="4">
   <div class="wrap">
-    <span class="eyebrow rv">Stage 6 <span class="who" style="background:var(--r4);color:#fff">R4 · Cloud platform</span></span>
-    <h2 class="rv" style="--d:.08s">Three stacks.<br><span class="g">One clear winner.</span></h2>
-    <div class="opts mt" id="opts"></div>
-
-    <div class="grid mt" style="grid-template-columns:1fr 1fr">
-      <div class="card rv rv-l">
-        <div style="display:flex;justify-content:space-between;align-items:center"><h3>Weighted scorecard</h3><span class="sub">weights = 100</span></div>
-        <div class="score mt-s" id="score"></div>
-      </div>
-      <div class="card rv rv-r">
-        <h3>Weights</h3>
-        <svg viewBox="0 0 300 200" style="width:100%;margin-top:6px" id="donut"></svg>
-      </div>
-    </div>
-
+    <span class="eyebrow rv">Stage 6 <span class="who" style="background:var(--r4);color:#fff">R4 · Hybrid edge platform</span></span>
+    <h2 class="rv" style="--d:.08s">One hybrid platform.<br><span class="g">Edge first, cloud second.</span></h2>
+    <p class="lede rv" style="--d:.14s">Safety decisions happen inside the greenhouse. The cloud keeps history, dashboards and the learning loop.</p>
+    <div class="plat mt" id="plat"></div>
   </div>
 </section>
 
@@ -1272,10 +1255,10 @@ html.touring .dots{opacity:0}
     <div class="gates mt-s" id="gates"></div>
 
     <div class="verdict mt rv">
-      <div class="stamp"><div><b>GO</b><small>Option C · Hybrid</small></div></div>
+      <div class="stamp"><div><b>S-GH</b><small>Hybrid edge</small></div></div>
       <div>
-        <span class="eyebrow" style="color:var(--leaf)">Final recommendation</span>
-        <p style="margin-top:10px" id="finalRec">Build Option C, the hybrid. Each zone node sanitizes its own readings and runs a Z-score plus an int8 autoencoder (~14 KB), so frost and ventilation failures are caught and acted on in about 6.4 s, well inside the 15 s limit, even with no internet. A local Mosquitto broker and a 56 KB-per-node flash ring buffer keep 24 h of telemetry, then burst-sync over TLS with sequence-number de-duplication. The cloud side is a single low-cost VPS running Mosquitto, TimescaleDB and Grafana for history, dashboards and weekly Isolation Forest retraining. Everything uses open protocols and open-source licences, so the exit cost stays low. Next step: a 14-day simulated pilot with 40 injected events, gated on recall ≥ 0.95, ≤ 1 false alarm/day and zero sequence gaps after a 24 h outage.</p>
+        <span class="eyebrow" style="color:var(--leaf)">Summary</span>
+        <p style="margin-top:10px" id="finalRec">S-GH is a hybrid edge system. Each zone node sanitizes its own readings and runs a Z-score plus an int8 autoencoder (~14 KB), so frost and ventilation failures are caught and acted on in about 6.4 s, well inside the 15 s limit, even with no internet. A local Mosquitto broker and a 56 KB-per-node flash ring buffer keep 24 h of telemetry, then burst-sync over TLS with sequence-number de-duplication. The cloud side is a single low-cost VPS running Mosquitto, TimescaleDB and Grafana for history, dashboards and weekly Isolation Forest retraining. Everything uses open protocols and open-source licences, so the exit cost stays low. Next step: a 14-day simulated pilot with 40 injected events, gated on recall ≥ 0.95, ≤ 1 false alarm/day and zero sequence gaps after a 24 h outage.</p>
         <div class="wc" id="wc"></div>
       </div>
     </div>
@@ -1555,37 +1538,33 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
   let up='',dn='';for(let h=0;h<=72;h+=0.5){up+=(h?'L':'M')+X(h)+' '+Y(base(h)+2.5);}
   for(let h=72;h>=0;h-=0.5){dn+='L'+X(h)+' '+Y(base(h)-2.5);}
   el('path',{d:up+dn+'Z',fill:'#93C556',opacity:.28},s);
-  [30,5].forEach(v=>el('path',{d:`M${L} ${Y(v)} H${W-R}`,stroke:'#D8453A','stroke-width':2,'stroke-dasharray':'6 6',opacity:.75},s));
   let p='';for(let h=0;h<=72;h+=0.25){p+=(h?'L':'M')+X(h).toFixed(1)+' '+Y(actual(h)).toFixed(1)}
   const path=el('path',{d:p,fill:'none',stroke:'#1E2A1B','stroke-width':2.5,class:'drawline','stroke-linejoin':'round'},s);
   path.style.setProperty('--len',Math.ceil(path.getTotalLength()));
   const mark=(h,v,c,label,hollow,dy)=>{const g=el('g',{class:'rv rv-s',style:'--d:1.8s'},s);el('circle',{cx:X(h),cy:Y(v),r:9,fill:hollow?'#fff':c,stroke:c,'stroke-width':3},g);const t=el('text',{x:X(h),y:Y(v)+dy,'text-anchor':'middle','font-size':11.5,'font-weight':700,fill:c},g);t.textContent=label};
-  mark(15,base(15),'#E8A33A','false alarm',false,-16);
-  mark(39,base(39),'#E8A33A','false alarm',false,-16);
-  mark(54,actual(54),'#D8453A','missed: heater off',true,26);
+  mark(55,actual(55),'#D8453A','heater failure → alert',false,28);
   const g=el('g',{class:'rv rv-s',style:'--d:2.1s'},s);
-  el('path',{d:`M${X(54)-150} ${Y(actual(54))+4} l8 8 l14 -16`,stroke:'#5E8F2F','stroke-width':3.5,fill:'none','stroke-linecap':'round'},g);
-  const tt=el('text',{x:X(54)-124,y:Y(actual(54))+10,'font-size':11.5,'font-weight':700,fill:'#5E8F2F'},g);tt.textContent='AE catches it';
+  el('circle',{cx:X(44)-150,cy:Y(actual(49))+2,r:11,fill:'#5E8F2F'},g);
+  el('path',{d:`M${X(44)-155} ${Y(actual(49))+2} l4 4 l8 -9`,stroke:'#fff','stroke-width':2.5,fill:'none','stroke-linecap':'round'},g);
+  const tt=el('text',{x:X(44)-134,y:Y(actual(49))+6,'font-size':11.5,'font-weight':700,fill:'#5E8F2F'},g);tt.textContent='leaves the normal band';
 })();
 
-/* ---------------- models ---------------- */
+/* ---------------- dual-layer AI ---------------- */
 (function(){
   const M=[
-    {n:'Z-Score / EWMA',p:'EDGE',pc:'teal',mem:['~0.2 KB',3],lat:['< 1 ms',2],cold:['1 hour',95],multi:['single signal',25],
+    {n:'Layer 1 · Rules + Z-score',p:'EDGE · DAY 0',pc:'teal',pts:['Works from the first minute','Heater ON but zone cold → alert','Vent told to open but not moving → alert','~0.2 KB memory'],
      ill:`<g fill="none" stroke-width="3" stroke-linecap="round"><path d="M10 70 C40 50 60 90 90 64 S140 40 170 60 S220 80 250 56" stroke="#1E2A1B"/><path d="M10 40 H250 M10 92 H250" stroke="#2A9D8F" stroke-dasharray="5 6"/></g><circle cx="200" cy="100" r="7" fill="#D8453A"/>`},
-    {n:'Isolation Forest',p:'CLOUD',pc:'amber',mem:['~2 MB',100],lat:['~10 ms',12],cold:['~7 days',50],multi:['multivariate',75],
-     ill:`<g stroke="#5E8F2F" stroke-width="3" fill="none" stroke-linecap="round"><path d="M50 100 V60 M50 60 L30 30 M50 60 L70 30 M130 100 V50 M130 50 L110 24 M130 50 L150 24 M130 70 L160 60 M210 100 V60 M210 60 L190 30 M210 60 L230 30"/></g><circle cx="230" cy="30" r="7" fill="#D8453A"/>`},
-    {n:'TinyML Autoencoder',p:'EDGE',pc:'teal',mem:['~14 KB',8],lat:['~2 ms',4],cold:['14 days',30],multi:['multi + temporal',100],
-     ill:`<g fill="#93C556"><circle cx="40" cy="20" r="6"/><circle cx="40" cy="44" r="6"/><circle cx="40" cy="68" r="6"/><circle cx="40" cy="92" r="6"/><circle cx="100" cy="36" r="6"/><circle cx="100" cy="76" r="6"/><circle cx="130" cy="56" r="7" fill="#E0567A"/><circle cx="160" cy="36" r="6"/><circle cx="160" cy="76" r="6"/><circle cx="220" cy="20" r="6"/><circle cx="220" cy="44" r="6"/><circle cx="220" cy="68" r="6"/><circle cx="220" cy="92" r="6"/></g><g stroke="#C8D3A8" stroke-width="1.2"><path d="M46 20 L94 36 M46 44 L94 36 M46 68 L94 76 M46 92 L94 76 M106 36 L124 56 M106 76 L124 56 M136 56 L154 36 M136 56 L154 76 M166 36 L214 20 M166 36 L214 44 M166 76 L214 68 M166 76 L214 92"/></g>`}
+    {n:'Layer 2 · TinyML autoencoder',p:'EDGE · ~14 KB',pc:'teal',pts:['Learns how all 5 signals move together','Predicts the expected value for each hour','Big gap between real and expected → alert','Explains which sensor looks wrong'],
+     ill:`<g fill="#93C556"><circle cx="40" cy="20" r="6"/><circle cx="40" cy="44" r="6"/><circle cx="40" cy="68" r="6"/><circle cx="40" cy="92" r="6"/><circle cx="100" cy="36" r="6"/><circle cx="100" cy="76" r="6"/><circle cx="130" cy="56" r="7" fill="#E0567A"/><circle cx="160" cy="36" r="6"/><circle cx="160" cy="76" r="6"/><circle cx="220" cy="20" r="6"/><circle cx="220" cy="44" r="6"/><circle cx="220" cy="68" r="6"/><circle cx="220" cy="92" r="6"/></g><g stroke="#C8D3A8" stroke-width="1.2"><path d="M46 20 L94 36 M46 44 L94 36 M46 68 L94 76 M46 92 L94 76 M106 36 L124 56 M106 76 L124 56 M136 56 L154 36 M136 56 L154 76 M166 36 L214 20 M166 36 L214 44 M166 76 L214 68 M166 76 L214 92"/></g>`},
+    {n:'Cloud · learning loop',p:'CLOUD · WEEKLY',pc:'amber',pts:['Stores the full history','Isolation Forest double-checks alerts','Retrains when the data drifts','Pushes a signed model update to the edge'],
+     ill:`<g stroke="#2A9D8F" stroke-width="3" fill="none" stroke-linecap="round"><path d="M60 80 a26 26 0 0 1 6 -50 a36 36 0 0 1 66 -8 a28 28 0 0 1 30 58z" fill="#EAF4F1"/><path d="M190 40 a50 50 0 0 1 0 50"/><path d="M186 92 l6 -4 l2 8"/></g><text x="110" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#17675E">retrain</text>`}
   ];
   const w=$('#models');
-  const meter=(lab,v,col)=>`<div class="meter"><span>${lab}</span><span class="t"><span data-w="${v[1]}" style="background:${col}"></span></span><span class="v">${v[0]}</span></div>`;
-  M.forEach((m,i)=>w.insertAdjacentHTML('beforeend',`<div class="card model rv${i===2?' sel':''}" style="--d:${i*0.1}s">
+  M.forEach((m,i)=>w.insertAdjacentHTML('beforeend',`<div class="card model rv" style="--d:${i*0.1}s">
     <span class="tag ${m.pc} place">${m.p}</span><h3>${m.n}</h3>
     <svg class="ill" viewBox="0 0 260 110">${m.ill}</svg>
-    ${meter('Memory',m.mem,'#E0567A')}${meter('Latency',m.lat,'#F2B33D')}${meter('Cold-start ready',m.cold,'#2A9D8F')}${meter('Sees',m.multi,'#5E8F2F')}
+    <div style="display:flex;flex-direction:column;gap:7px;margin-top:6px">${m.pts.map(t=>`<span style="font-size:13.5px">✓ ${t}</span>`).join('')}</div>
   </div>`));
-  w.addEventListener('click',e=>{const c=e.target.closest('.model');if(!c)return;$$('.model').forEach(x=>x.classList.remove('sel'));c.classList.add('sel')});
   // contributions
   const C=[['Temperature',78,'#D8453A'],['Humidity',16,'#2A9D8F'],['CO₂',4,'#E0567A'],['Soil / light',2,'#C8D3A8']];
   $('#contrib').innerHTML=C.map(c=>`<div class="bar"><span>${c[0]}</span><span class="t"><span data-w="${c[1]}" style="background:${c[2]}"></span></span><span class="v">${c[1]} %</span></div>`).join('');
@@ -1638,59 +1617,21 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
     <div class="top"><span class="nm">${c.n}</span><span class="tag ${c.k==='fault'?'amber':'red'}">${c.k==='fault'?'SENSOR FAULT':'TRUE ANOMALY'}</span></div>
     <svg viewBox="0 0 300 84">${spark(c)}</svg>
     <div class="rule">${c.rule}</div><div class="out"></div></div>`));
-  const set=m=>{
-    let good=0;
-    $$('#matrix .case').forEach((e,i)=>{const r=m==='s5'?C[i].s5:C[i].nv;const o=e.querySelector('.out');
-      o.className='out '+(r[1]?'good':'bad');o.innerHTML=(r[1]?'✓ ':'✗ ')+r[0];e.classList.toggle('badc',!r[1]);if(r[1])good++});
-    $('#faultScore').innerHTML=`<b style="color:${good===6?'var(--leaf2)':'var(--red)'}">${good} / 6</b> cases handled correctly`;
-    const tg=$('#faultToggle');tg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
-    const on=tg.querySelector('button.on'),k=tg.querySelector('.knob');k.style.left=on.offsetLeft+'px';k.style.width=on.offsetWidth+'px';
-  };
-  $('#faultToggle').addEventListener('click',e=>{const b=e.target.closest('button');if(b)set(b.dataset.m)});
-  set('s5');window.addEventListener('resize',()=>set($('#faultToggle button.on').dataset.m));
-  document.fonts&&document.fonts.ready.then(()=>set($('#faultToggle button.on').dataset.m));
-
-  const P=[
-    ['Minimize','Zone IDs only. No camera, GPS or names.','M3 12h18M7 6h10M10 18h4'],
-    ['Pseudonymize','Operator IDs → HMAC-SHA256 in logs.','M12 2a5 5 0 0 1 5 5v3H7V7a5 5 0 0 1 5-5zM5 10h14v12H5z'],
-    ['Encrypt','TLS 1.2+ in transit · AES-256 at rest.','M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4'],
-    ['RBAC','Operator · Agronomist · Admin roles.','M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 22a8 8 0 0 1 16 0'],
-    ['Retain','Raw 90 days hot → 15-min aggregates 3 years.','M12 7v5l3 3M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18z'],
-    ['Cold store','Monthly Parquet to object storage.','M4 7l8-4 8 4v10l-8 4-8-4zM4 7l8 4 8-4M12 11v10']
-  ];
-  $('#priv').innerHTML=P.map((p,i)=>`<div class="card pv rv" style="--d:${i*0.06}s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${p[2]}"/></svg><b>${p[0]}</b><span>${p[1]}</span></div>`).join('');
+  $$('#matrix .case').forEach((e,i)=>{const o=e.querySelector('.out');o.className='out good';o.innerHTML='✓ '+C[i].s5[0]});
 })();
 
-/* ---------------- cloud options ---------------- */
+/* ---------------- hybrid platform ---------------- */
 (function(){
-  const J=[['Ingest','M4 12h10M10 6l6 6-6 6M20 4v16'],['Store','M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0'],['Analyze','M4 20V10M10 20V4M16 20v-7M22 20H2'],['Act','M13 2L4 14h7l-1 8 9-12h-7z'],['Manage','M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12h3M2 12h3M12 2v3M12 19v3'],['Dashboards','M3 3h18v14H3zM8 21h8M12 17v4']];
-  const O=[
-    {k:'A',n:'Managed cloud',jobs:['AWS IoT Core (MQTT, X.509)','Timestream for InfluxDB','Lambda + scikit-learn layer','IoT Rules → SNS','IoT Device Management','Amazon Managed Grafana']},
-    {k:'B',n:'Self-hosted OSS',jobs:['Mosquitto 2.0.x · EPL-2.0','TimescaleDB 2.x on PostgreSQL 17 · Apache-2.0 / PostgreSQL','Python 3.12 + scikit-learn 1.x · BSD-3','Grafana alerting → email / Telegram','Docker Compose + Ansible','Grafana OSS 12.x · AGPL-3.0']},
-    {k:'C',n:'Hybrid edge',jobs:['Local Mosquitto + TLS bridge to cloud','Edge ring buffer → cloud TimescaleDB','Edge AE (TFLite Micro · Apache-2.0) + cloud IF','Local relay < 15 s · cloud notify','Bridge, cert rotation, OTA model push','Grafana OSS + local status page'],best:true}
+  const J=[
+    ['Ingest','M4 12h10M10 6l6 6-6 6M20 4v16','Local Mosquitto 2.0 broker, MQTT QoS 1','TLS bridge to the cloud broker'],
+    ['Store','M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0zM4 6c0 2 16 2 16 0M4 12c0 2 16 2 16 0','24 h flash ring buffer per node','TimescaleDB history (PostgreSQL)'],
+    ['Analyze','M4 20V10M10 20V4M16 20v-7M22 20H2','Rules + TinyML autoencoder','Isolation Forest audits · weekly retrain'],
+    ['Act','M13 2L4 14h7l-1 8 9-12h-7z','Vent, heater, fan, pump relays in < 15 s','Operator notification'],
+    ['Manage','M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 12h3M2 12h3M12 2v3M12 19v3','X.509 cert per node · health status','Cert rotation · signed OTA model push'],
+    ['Dashboards','M3 3h18v14H3zM8 21h8M12 17v4','Local status page','Grafana dashboards']
   ];
-  $('#opts').innerHTML=O.map((o,i)=>`<div class="card opt rv${o.best?' best':''}" style="--d:${i*0.1}s">
-    ${o.best?'<span class="tag dark ribbon">RECOMMENDED</span>':''}
-    <div style="display:flex;align-items:baseline;gap:12px"><span class="ol">${o.k}</span><h3>${o.n}</h3></div>
-    <div style="margin-bottom:12px"></div>
-    ${o.jobs.map((j,k)=>`<div class="job"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${J[k][1]}"/></svg><div><small>${J[k][0]}</small>${j}</div></div>`).join('')}
-  </div>`).join('');
-
-  // scorecard
-  const W=[['Latency & offline',30],['Security',20],['Ops effort',20],['Edge fit',15],['Lock-in / exit',15]];
-  const sc={A:[3,5,5,3,2],B:[2,4,2,3,5],C:[5,4,3,5,4]};
-  const tot=k=>sc[k].reduce((a,s,i)=>a+s*W[i][1],0)/5;
-  $('#score').innerHTML=['A','B','C'].map(k=>`<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><b>Option ${k}</b><span class="mono">${tot(k).toFixed(0)} / 100</span></div>
-    <div style="display:flex;height:26px;border-radius:9px;overflow:hidden;background:var(--bg2)">${sc[k].map((s,i)=>`<span title="${W[i][0]}: ${s}/5 × ${W[i][1]}" style="width:${s*W[i][1]/5}%;background:${['#5E8F2F','#2A9D8F','#1E2A1B','#F2B33D','#E0567A','#B9663D'][i]};opacity:${.45+s*.11}"></span>`).join('')}</div></div>`).join('')+
-    `<p class="sub">Score = Σ(weight × rating ÷ 5). Ratings 1–5.</p>`;
-  // donut
-  const d=$('#donut');let a0=-Math.PI/2;const cols=['#5E8F2F','#2A9D8F','#1E2A1B','#F2B33D','#E0567A','#B9663D'];
-  W.forEach((w,i)=>{const a1=a0+w[1]/100*Math.PI*2;const r=70,cx=90,cy=100;
-    const x0=cx+r*Math.cos(a0),y0=cy+r*Math.sin(a0),x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1);
-    el('path',{d:`M${x0} ${y0} A${r} ${r} 0 ${a1-a0>Math.PI?1:0} 1 ${x1} ${y1}`,fill:'none',stroke:cols[i],'stroke-width':26},d);a0=a1;
-    const t=el('text',{x:190,y:42+i*24,'font-size':12,fill:'#1E2A1B'},d);t.textContent=`${w[1]}  ${w[0]}`;el('rect',{x:176,y:33+i*24,width:9,height:9,rx:2,fill:cols[i]},d)});
-  const ct=el('text',{x:90,y:106,'text-anchor':'middle',class:'dsp','font-family':'Manrope, sans-serif','font-size':24,fill:'#1E2A1B'},d);ct.textContent='100';
-
+  $('#plat').innerHTML=J.map((j,i)=>`<div class="card pj rv" style="--d:${i*0.06}s"><div class="pjh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${j[1]}"/></svg><b>${j[0]}</b></div>
+    <div class="pjr"><span class="tag teal">EDGE</span><span>${j[2]}</span></div><div class="pjr"><span class="tag">CLOUD</span><span>${j[3]}</span></div></div>`).join('');
 })();
 
 /* ---------------- architecture ---------------- */
@@ -1740,9 +1681,6 @@ $$('.drawer>button').forEach(b=>b.addEventListener('click',()=>{
     ['mosquitto.conf man page (bridge, ACL, TLS)','https://mosquitto.org/man/mosquitto-conf-5.html'],
     ['OASIS MQTT v5.0 / v3.1.1 specification','https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html'],
     ['TimescaleDB source & licence','https://github.com/timescale/timescaledb'],
-    ['AWS IoT Core pricing','https://aws.amazon.com/iot-core/pricing/'],
-    ['Amazon Timestream pricing','https://aws.amazon.com/timestream/pricing/'],
-    ['Amazon Managed Grafana pricing','https://aws.amazon.com/grafana/pricing/'],
     ['Grafana licensing (AGPL-3.0)','https://grafana.com/licensing/'],
     ['TensorFlow Lite Micro','https://github.com/tensorflow/tflite-micro'],
     ['scikit-learn IsolationForest','https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html']
@@ -2406,7 +2344,7 @@ $$('.card, .alertcard').forEach(c=>{if(c.querySelector('[data-w]'))wIO.observe(c
 
 const secs=$$('section[data-sp]');
 const dots=$('#dots');secs.forEach(s=>dots.insertAdjacentHTML('beforeend',`<a href="#${s.id}" aria-label="${s.id}"></a>`));
-const names=['Team intro','Problem & KPIs','Edge & telemetry','AI & sanitization','Demo & cloud'];
+const names=['Team intro','Problem & KPIs','Edge & telemetry','AI & sanitization','Demo & platform'];
 function onScroll(){
   const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
   $('#progress').style.width=(y/max*100)+'%';
@@ -2444,13 +2382,11 @@ const TOUR=(function(){
     {t:'#topo',who:1,h:'R2 · MQTT telemetry topology',p:'Five zone nodes publish over MQTT with QoS 1 to an edge aggregator, which runs the broker, the AI and the 24 h ring buffer, then bridges to the cloud over TLS.',d:10000},
     {t:'#latbar',up:'.card',who:1,h:'R2 · Alert latency budget',p:'5 s sampling + 0.05 s AI + 0.3 s MQTT + 1 s actuator ≈ 6.4 s worst case, well under the 15 s requirement.',d:8000},
     {t:'#byteDrawer',top:true,who:1,h:'R2 · Payload & data-volume maths',p:'A 106-byte JSON payload, 14,400 messages a day, and step-by-step MB and GB maths. The offline buffer packs 20-byte records so 24 h fits in flash.',d:11000,a:()=>openDrawer('#byteDrawer'),z:()=>closeDrawer('#byteDrawer')},
-    {t:'#thrChart',up:'.card',who:2,h:'R3 · Why fixed thresholds fail',p:'Normal summer afternoons trip a fixed 30 °C limit (false alarms), while an autumn heater failure stays above 5 °C and is missed. A learned normal band catches it.',d:10000},
-    {t:'#models',who:2,h:'R3 · Three candidate models',p:'Z-score is tiny but sees one signal at a time. Isolation Forest is powerful but too big for the edge. A TinyML autoencoder fits in ~14 KB and sees every signal together.',d:10000},
+    {t:'#thrChart',up:'.card',who:2,h:'R3 · It learns what normal looks like',p:'The green band is what the AI expects for each hour and season. When a heater fails at night, the temperature leaves the band and the AI raises an alert.',d:10000},
+    {t:'#models',who:2,h:'R3 · Dual-layer edge AI',p:'Layer 1 rules work from day one. Layer 2, a tiny autoencoder (~14 KB), learns how all five signals move together. The cloud double-checks alerts and retrains the model weekly.',d:10000},
     {t:'.timeline',up:'.grid',who:2,h:'R3 · Cold start, features & drift',p:'Day 0: rules only. After 2 weeks of clean data the autoencoder runs in shadow mode, then goes live, and retrains when the data drifts.',d:9000},
     {t:'.explain',who:2,h:'R3 · Explainable alerts',p:'Operators get plain language: "Zone 3 is 7.4 °C colder than normal for 2 AM. Heater likely off". The vents close and the backup heater starts automatically.',d:9000},
-    {t:'#matrix',who:2,h:'R3 · Broken sensor or real emergency?',p:'A naïve glitch filter handles only 2 of 6 cases. It deletes real frost and raises false alarms from a stuck sensor.',d:8000,a:()=>click('#faultToggle [data-m="naive"]')},
-    {t:'#matrix',who:2,h:'R3 · Stage 5 sanitization rules',p:'Our rules handle all 6: faults are quarantined, never deleted, and a fast drop with a second witness is always treated as a real anomaly.',d:8000,a:()=>click('#faultToggle [data-m="s5"]')},
-    {t:'#priv',who:2,h:'R3 · Privacy & governance',p:'Data minimisation, pseudonymised operator IDs, TLS and AES-256 encryption, role-based access, 90-day hot retention and cold storage.',d:7000},
+    {t:'#matrix',who:2,h:'R3 · Broken sensor or real emergency?',p:'Stage 5 quarantines impossible readings such as a stuck 0 %, a −40 °C spike or a disconnect without waking anyone, while real frost, pump and heater failures always raise an alert.',d:10000},
     {t:'#stage',who:3,h:'R4 · Live simulation lab',p:'A physics-driven greenhouse: sun, heater, vents, irrigation, humidity and CO₂ all interact. The autoencoder trained in this browser on 72 h of normal data.',d:9000,a:()=>{click('[data-s="normal"]');speed(1)}},
     {t:'#stage',who:3,h:'Scenario 1 · Heater failure at night',p:'Zone 3 loses its heater. Temperature falls and frost forms on the glass. The edge raises an alert and turns on the backup heater within seconds.',d:16000,a:()=>{speed(1);click('[data-s="heater"]')}},
     {t:'.lab-grid',who:3,h:'Dual-layer AI, explained live',p:'Actual vs AI-expected temperature, the Layer 1 rule ring, the Layer 2 autoencoder ring, and per-sensor bars showing what looks wrong.',d:9000},
@@ -2460,12 +2396,11 @@ const TOUR=(function(){
     {t:'#stage',who:3,h:'Scenario 5 · Single −40 °C glitch',p:'One crazy reading is held for one sample and quarantined. The operator is never woken up.',d:7000,a:()=>{click('[data-s="normal"]');click('[data-s="spike"]')}},
     {t:'#stage',who:3,h:'Twist card · Gateway offline',p:'The uplink goes down. The edge keeps detecting and acting locally while every node writes packed records into its 24 h flash ring buffer.',d:11000,a:()=>{click('[data-s="normal"]');click('[data-s="offline"]')}},
     {t:'.lab-grid3',who:3,h:'Reconnect · burst sync',p:'When the internet returns, the buffered records burst to the cloud with 0 gaps and 0 duplicates, de-duplicated by node and sequence number.',d:9000,a:()=>click('[data-s="offline"]'),z:()=>{click('[data-s="normal"]');speed(1)}},
-    {t:'#opts',who:3,h:'R4 · Three cloud architectures',p:'Managed AWS, self-hosted open source, or a hybrid, compared across the six platform jobs: ingest, store, analyse, act, manage and dashboards.',d:9000},
-    {t:'#score',up:'.grid',who:3,h:'R4 · Weighted scorecard',p:'Latency and offline resilience, security, operations effort, edge fit and lock-in. The hybrid design wins with 85 out of 100.',d:8000},
+    {t:'#plat',who:3,h:'R4 · Hybrid edge platform',p:'Every platform job split between edge and cloud: the greenhouse makes safety decisions in seconds, the cloud keeps history, dashboards and the learning loop.',d:10000},
     {t:'#archSvg',up:'.card',who:3,h:'R4 · End-to-end architecture',p:'Sense → clean → decide → act locally, then sync to the cloud for history, dashboards and weekly model retraining.',d:10000},
     {t:'#twist',who:3,h:'R4 · Twist card impact',p:'+56 KB of flash per node, 0 s added alert delay, a 288 KB burst on reconnect, and zero duplicates.',d:8000},
     {t:'#gates',who:3,h:'R4 · Phased rollout',p:'Simulation → shadow mode → 1-zone pilot → 5 zones → operate, each stage gated by measurable criteria.',d:8000},
-    {t:'.verdict',who:3,h:'Final recommendation · GO',p:'Build the hybrid: edge AI for safety in seconds, a cloud for history and learning, open standards throughout.',d:10000},
+    {t:'.verdict',who:3,h:'Summary',p:'S-GH: edge AI keeps crops safe in seconds, even offline, while the cloud keeps the history and keeps the model learning.',d:10000},
     {t:'#home .intro4',who:-1,h:'Thank you',p:'S-GH · Greenhouse Microclimate Anomaly Detector · arqamcodes.github.io/AIOT-Project',d:7000,outro:true}
   ];
   let i=-1,timer=null,on=false,paused=false,raf=0,left=0,stamp=0;
